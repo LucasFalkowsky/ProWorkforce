@@ -2,25 +2,53 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, initialize the Database with Prisma:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npx prisma generate
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Make shure docker is installed:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+docker -v
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Make shure docker is running:
+
+```bash
+docker run hello-world
+```
+
+Initialise the Project:
+
+```bash
+docker compose up
+```
+
+Migrate the schema to the Database:
+
+```bash
+npx prisma migrate dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the Application.
+
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+
+[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the projects Storybook.
+
+To gain access to a visualisation of the database run:
+
+```bash
+npx prisma studio
+```
+
+Open [http://localhost:5555](http://localhost:5555) with your browser to see the database.
 
 ## Learn More
 

@@ -1,3 +1,19 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+      "@typedigital/eslint-config",
+      "@typedigital/eslint-config/typescript",
+      "@typedigital/eslint-config/react",
+      "google"
+  ],
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "parser": "@typescript-eslint/parser",
+  "env": {
+      "node": true
+  },
+  "rules": {
+    "new-cap": "off"
+  },
+  "root": true
 }
