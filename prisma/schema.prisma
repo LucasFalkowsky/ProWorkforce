@@ -12,14 +12,64 @@ datasource db {
 
 model User {
   id String @id @default(uuid())
-  username String @unique
+  username String @db.VarChar(250)
   email String @unique
-  role Role @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  company String?
 }
 
-enum Role {
-  USER
-  ADMIN
+model Company {
+  id String @id @default(uuid())
+  name String @db.VarChar(250)
+  datasource String? @db.VarChar(128)
+  employees String[] @db.VarChar(128)
+  projects String[] @db.VarChar(128)
+}
+
+model Employee {
+  id String @id @default(uuid())
+  firstname String @db.VarChar(128)
+  lastname String @db.VarChar(128)
+  workweek Int?
+  teams String[] @db.VarChar(128)
+}
+
+model Team {
+  id String @id @default(uuid())
+  company String @db.VarChar(128)
+  name String @db.VarChar(128)
+}
+
+model Project {
+  id String @id @default(uuid())
+  name String @db.VarChar(128)
+  customer String? @db.VarChar(250)
+  phases String[] @db.VarChar(128)
+  description String? @db.VarChar(128)
+  state State
+  startdate DateTime?
+}
+
+model Phase {
+  id String @id @default(uuid())
+  name String @db.VarChar(128)
+  is_active Boolean
+  startdate DateTime?
+  enddate DateTime?
+  delay Int?
+  employee_timeframes String[] @db.VarChar(128)
+}
+
+model EmployeeTimeframe {
+  id String @id @default(uuid())
+  employee String @db.VarChar(128)
+  startdate DateTime
+  enddate DateTime
+  workweek Int
+}
+
+enum State {
+  DRAFT
+  ONGOING
+  COMPLETED
+  ARCHIVED
 }
