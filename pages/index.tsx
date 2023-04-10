@@ -2,15 +2,10 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import React from 'react';
 import { NextPage } from 'next';
-import styles from '../styles/Home.module.css';
-import { useUser } from '@/frontend/hooks/use-user';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const Home: NextPage = () => {
-  const { user, isLoadingUser } = useUser('695c6ee6-7352-4247-9a6c-1a31c9f94db0', '');
-  console.log(user);
-
   return (
     <>
       <Head>
@@ -20,15 +15,7 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        {isLoadingUser && (
-          <>
-            Loading...
-          </>
-        )} : (
-          <>
-            {user?.email}
-          </>
-        )
+        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'yellow' } }>Ciao ragazzi!!</div>
       </main>
     </>
   );
