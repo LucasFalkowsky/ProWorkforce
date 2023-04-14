@@ -1,3 +1,3 @@
-import teamEmployeesHandler from "@/backend/handlers/employee/team-employees-handler";
+import teamEmployeesHandler from "@/backend/handlers/handlers-employee/team-employees-handler";
 
 export default teamEmployeesHandler;

@@ -1,3 +1,3 @@
-import userHandler from "@/backend/handlers/user-handler";
+import userHandler from "@/backend/handlers/handlers-user/user-handler";
 
 export default userHandler;

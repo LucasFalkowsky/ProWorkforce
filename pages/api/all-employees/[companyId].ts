@@ -1,3 +1,3 @@
-import allEmployeesHandler from "@/backend/handlers/employee/all-employees-handler";
+import allEmployeeHandler from "@/backend/handlers/handlers-employee/all-employees-handler";
 
-export default allEmployeesHandler;
+export default allEmployeeHandler;

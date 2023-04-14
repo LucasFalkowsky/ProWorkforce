@@ -3,7 +3,7 @@ import { Employee } from "@prisma/client"
 import fetchGet from './utils/http/get'
 import FetchError from './utils/http/fetch-error'
 
-const employeeRoute = '/api/team-employees/'
+const employeeRoute = '/api/employees-in-team/'
 
 type TeamEmployeesReturnType = {
     employees: Employee[] | undefined,

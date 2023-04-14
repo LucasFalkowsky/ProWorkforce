@@ -5,26 +5,26 @@ import FetchError from './utils/http/fetch-error'
 
 const companyRoute = '/api/company/'
 
-type companyReturnType = {
+type CompanyReturnType = {
     company?: Company,
     companyError?: Error,
-    isLoadingcompany: boolean,
-    mutatecompany: KeyedMutator<Company>
+    isLoadingCompany: boolean,
+    mutateCompany: KeyedMutator<Company>
 }
 
 const getCompany = async ([url, idToken]: [string, string]): Promise<Company> => {
     return fetchGet<Company>(url, { idToken })
 }
 
-const useCompany = (companyId: string, idToken: string): companyReturnType => {
+const useCompany = (companyId: string, idToken: string): CompanyReturnType => {
     const { data, error, isValidating, mutate } = useSWR<Company, FetchError>(
         [`${companyRoute}${companyId}`, idToken], getCompany,
     );
     return {
         company: data,
         companyError: error,
-        isLoadingcompany: isValidating,
-        mutatecompany: mutate,
+        isLoadingCompany: isValidating,
+        mutateCompany: mutate,
     }
 }
 

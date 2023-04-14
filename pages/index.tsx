@@ -5,13 +5,17 @@ import { NextPage } from 'next';
 import { useUser } from '@/frontend/hooks/use-user';
 import { useCompany } from '@/frontend/hooks/use-company';
 import { useAllEmployees } from '@/frontend/hooks/use-all-employees';
+import { useAllProjects } from '@/frontend/hooks/use-all-projects';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const Home: NextPage = () => {
   const { user } = useUser('c9bbe9b7-1578-4f06-9e63-4c82bfa4b4c1', 'asdkfwq0jfa');
-  const { company } = useCompany(user?.company!, 'asdkfwq0jfa');
-  const { employees } = useAllEmployees(company?.id!, 'asdkfwq0jfa');
+  const companyId = user?.company;
+  const { company } = useCompany(companyId!, 'asdkfwq0jfa');
+  const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
+  const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
+
 
   return (
     <>
@@ -28,13 +32,21 @@ const Home: NextPage = () => {
             <h3>User Data</h3>
             <p>{user?.username} {company ? `von ${company.name}` : ''} | Kontakt: {user?.email}</p>
             <h3>Company Employees</h3>
-            {employees?.map((employee) => {
+            {employees?.map((employee, key) => {
               return (
-                <p>
+                <p key={`${key}`}>
                   Mitarbeitende Person {employee.firstname} {employee.lastname} | er / sie arbeitet {employee.workweek} Stunden pro Woche
                 </p>
               )
             })}
+            <h3>Die Firma {company?.name} hat folgende Projekte:</h3>
+            <ul>
+              {allProjects?.map((project, key) => {
+                return(
+                  <li key={`${key}`}>{project.name} für Kunde {project.customer} startet am {new Date(project.startdate!).toLocaleDateString()}</li>
+                )
+              })}
+            </ul>
           </div>
         </div>
       </main>
