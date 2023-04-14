@@ -1,8 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getIdTokenOrThrow, handleError, validateOrThrow } from './helpers/handler-helper';
-import { userQuerySchema } from '../schemas/user-schema';
-import { HTTPMethod } from './types/method';
+import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/handler-helper';
+import { userQuerySchema } from '../../schemas/user-schema';
+import { HTTPMethod } from '../types/method';
 import { User } from '@prisma/client';
 
 export default async function handler(
