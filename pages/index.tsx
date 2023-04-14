@@ -2,10 +2,17 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import React from 'react';
 import { NextPage } from 'next';
+import { useUser } from '@/frontend/hooks/use-user';
+import { useCompany } from '@/frontend/hooks/use-company';
+import { useAllEmployees } from '@/frontend/hooks/use-all-employees';
 
 const inter = Inter({ subsets: ['latin'] });
 
 const Home: NextPage = () => {
+  const { user } = useUser('c9bbe9b7-1578-4f06-9e63-4c82bfa4b4c1', 'asdkfwq0jfa');
+  const { company } = useCompany(user?.company!, 'asdkfwq0jfa');
+  const { employees } = useAllEmployees(company?.id!, 'asdkfwq0jfa');
+
   return (
     <>
       <Head>
@@ -15,7 +22,21 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'yellow' } }>Ciao ragazzi!!</div>
+        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'white' } }>
+          <h1>Datenbank Daten</h1>
+          <div>
+            <h3>User Data</h3>
+            <p>{user?.username} {company ? `von ${company.name}` : ''} | Kontakt: {user?.email}</p>
+            <h3>Company Employees</h3>
+            {employees?.map((employee) => {
+              return (
+                <p>
+                  Mitarbeitende Person {employee.firstname} {employee.lastname} | er / sie arbeitet {employee.workweek} Stunden pro Woche
+                </p>
+              )
+            })}
+          </div>
+        </div>
       </main>
     </>
   );

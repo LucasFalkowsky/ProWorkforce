@@ -7,15 +7,25 @@ FROM node:alpine
 RUN mkdir -p /app
 WORKDIR /app
 
-# Copy package.js and package-lock.json to the /app working directory
+# copy source files
+COPY . /app
+
+# Copy package.js, package-lock.json and prisma to the /app working directory
 COPY package*.json /app
+COPY prisma ./prisma/
 
 # install dependencies
 RUN npm install
 
-# copy source files
-COPY . /app
+COPY . .
 
-# start app
+# build app
+RUN npm run build
+
 EXPOSE 3000
+
+# generate db
+RUN npx prisma generate
+
+# start app and storybook
 CMD ["sh", "-c", "npm run dev & npm run storybook"]

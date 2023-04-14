@@ -1,27 +1,27 @@
 import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIdTokenOrThrow, handleError, validateOrThrow } from './helpers/handler-helper';
-import { userQuerySchema } from '../schemas/user-schema';
 import { HTTPMethod } from './types/method';
-import { User } from '@prisma/client';
+import { Company } from '@prisma/client';
+import { companyQuerySchema } from '../schemas/company-schema';
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<User>
+    res: NextApiResponse<Company>
 ): Promise<void> {
     const { method } = req
 
     try {
         const idToken = getIdTokenOrThrow(req);
-        const { userId  } = validateOrThrow(userQuerySchema, req.query);
+        const { companyId  } = validateOrThrow(companyQuerySchema, req.query);
 
         switch (method) {
             case HTTPMethod.GET: {
-                const user = await prisma.user.findUnique({
-                    where: { id: userId }
+                const company = await prisma.company.findUnique({
+                    where: { id: companyId }
                 })
-                if (user) {
-                    return void res.status(200).json(user);
+                if (company) {
+                    return void res.status(200).json(company);
                 }
                 return void res.status(400).end();
             }

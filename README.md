@@ -8,6 +8,12 @@ First, initialize the Database with Prisma:
 npx prisma generate
 ```
 
+Build a prisma image
+
+```bash
+docker build -t prisma-engine .
+```
+
 Make shure docker is installed:
 
 ```bash

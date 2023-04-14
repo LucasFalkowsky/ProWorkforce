@@ -21,7 +21,7 @@ services:
       - db
     restart: always
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: ${DATABASE_CONTAINER_REF}
     volumes:
       - ./:/app
       - /app/node_modules
@@ -37,5 +37,5 @@ services:
       - db
     command: npm run storybook
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=${DATABASE_CONTAINER_REF}
       - NODE_ENV=development
