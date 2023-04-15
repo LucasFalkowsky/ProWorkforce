@@ -3,26 +3,25 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/handler-helper';
 import { HTTPMethod } from '../types/method';
 import { Project } from '@prisma/client';
-import { allProjectsQuerySchema } from '../../schemas/project-schema';
+import { projectQuerySchema } from '../../schemas/project-schema';
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Project[]>
+    res: NextApiResponse<Project>
 ): Promise<void> {
     const { method } = req
 
     try {
         const idToken = getIdTokenOrThrow(req);
-        const { companyId  } = validateOrThrow(allProjectsQuerySchema, req.query);
+        const { projectId  } = validateOrThrow(projectQuerySchema, req.query);
 
         switch (method) {
             case HTTPMethod.GET: {
-                const allProjects = await prisma.project.findMany({
-                    where: { company: companyId }
+                const project = await prisma.project.findUnique({
+                    where: { id: projectId }
                 })
-                console.log(allProjects);
-                if (allProjects) {
-                    return void res.status(200).json(allProjects);
+                if (project) {
+                    return void res.status(200).json(project);
                 }
                 return void res.status(400).end();
             }

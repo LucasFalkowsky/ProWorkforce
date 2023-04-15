@@ -3,7 +3,7 @@ import { Project } from "@prisma/client"
 import fetchGet from './utils/http/get'
 import FetchError from './utils/http/fetch-error'
 
-const projectRoute = '/api/all-projects/'
+const allProjectsRoute = '/api/all-projects/'
 
 type AllProjectsReturnType = {
     allProjects?: Project[],
@@ -16,9 +16,9 @@ const getAllProjects = async ([url, idToken]: [string, string]): Promise<Project
     return fetchGet<Project[]>(url, { idToken })
 }
 
-const useAllProjects = (projectId: string, idToken: string): AllProjectsReturnType => {
+const useAllProjects = (companyId: string, idToken: string): AllProjectsReturnType => {
     const { data, error, isValidating, mutate } = useSWR<Project[], FetchError>(
-        [`${projectRoute}${projectId}`, idToken], getAllProjects,
+        [`${allProjectsRoute}${companyId}`, idToken], getAllProjects,
     );
     return {
         allProjects: data,
