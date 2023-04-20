@@ -1,14 +1,14 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
 import React from 'react';
 import { NextPage } from 'next';
 import { useUser } from '@/frontend/hooks/use-user';
+
 import { useCompany } from '@/frontend/hooks/use-company';
 import { useAllEmployees } from '@/frontend/hooks/use-all-employees';
 import { useAllProjects } from '@/frontend/hooks/use-all-projects';
 import { useAllPhases } from '@/frontend/hooks/use-all-phases';
-
-const inter = Inter({ subsets: ['latin'] });
+import { useRouter } from 'next/router';
+import { en } from '@/public/locales/index/en';
 
 const Home: NextPage = () => {
   const { user } = useUser('c9bbe9b7-1578-4f06-9e63-4c82bfa4b4c1', 'asdkfwq0jfa');
@@ -17,6 +17,12 @@ const Home: NextPage = () => {
   const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
   const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
   const { allPhases } = useAllPhases(allProjects ? allProjects![0].id : '', 'asdkfwq0jfa')
+
+const Home: NextPage = () => {
+
+  const router = useRouter();
+  const {locale} = router;
+  const t = locale === 'en' ? en : en;
 
   return (
     <>
