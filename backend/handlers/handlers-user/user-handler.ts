@@ -4,6 +4,7 @@ import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/hand
 import { userQuerySchema } from '../../schemas/user-schema';
 import { HTTPMethod } from '../types/method';
 import { User } from '@prisma/client';
+import { getUserService } from '@/backend/services/user-service';
 
 export default async function handler(
     req: NextApiRequest,
@@ -17,18 +18,10 @@ export default async function handler(
 
         switch (method) {
             case HTTPMethod.GET: {
-                const user = await prisma.user.findUnique({
-                    where: { id: userId }
-                })
-                if (user) {
-                    return void res.status(200).json(user);
-                }
-                return void res.status(400).end();
+                return getUserService(userId, res);
             }
         }
     } catch (error) {
         return handleError(error, res)
     }
 }
-
-// TODO: Spezifikation der REST Schnittstelle

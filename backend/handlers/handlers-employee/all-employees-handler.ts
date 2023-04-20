@@ -1,9 +1,9 @@
-import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/handler-helper';
 import { HTTPMethod } from '../types/method';
 import { Employee } from '@prisma/client';
 import { allEmployeesQuerySchema } from '../../schemas/employee-schema';
+import { getAllEmployeesService } from '@/backend/services/employee-service';
 
 export default async function handler(
     req: NextApiRequest,
@@ -17,18 +17,10 @@ export default async function handler(
 
         switch (method) {
             case HTTPMethod.GET: {
-                const employees = await prisma.employee.findMany({
-                    where: { company: companyId }
-                })
-                if (employees) {
-                    return void res.status(200).json(employees);
-                }
-                return void res.status(400).end();
+                return getAllEmployeesService(companyId, res);
             }
         }
     } catch (error) {
         return handleError(error, res)
     }
 }
-
-// TODO: Spezifikation der REST Schnittstelle

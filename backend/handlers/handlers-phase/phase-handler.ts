@@ -1,9 +1,9 @@
-import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/handler-helper';
 import { HTTPMethod } from '../types/method';
 import { Phase } from '@prisma/client';
 import { phaseQuerySchema } from '@/backend/schemas/phase-schema';
+import { getPhaseService } from '@/backend/services/phase-service';
 
 export default async function handler(
     req: NextApiRequest,
@@ -17,13 +17,7 @@ export default async function handler(
 
         switch (method) {
             case HTTPMethod.GET: {
-                const phase = await prisma.phase.findUnique({
-                    where: { id: phaseId }
-                })
-                if (phase) {
-                    return void res.status(200).json(phase);
-                }
-                return void res.status(400).end();
+                return getPhaseService(phaseId, res);
             }
         }
     } catch (error) {

@@ -1,10 +1,10 @@
-import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/handler-helper';
 import { HTTPMethod } from '../types/method';
 import { Employee } from '@prisma/client';
 import { EmployeesInTeamQuerySchema } from '@/backend/schemas/team-schema';
 import ServiceError from '@/backend/services/utils/service-error';
+import { getAllTeamEmployeesService } from '@/backend/services/employee-service';
 
 export default async function handler(
     req: NextApiRequest,
@@ -18,25 +18,10 @@ export default async function handler(
 
         switch (method) {
             case HTTPMethod.GET: {
-                const employeeTeams = await prisma.employeeTeam.findMany({
-                    where: { team: teamId }
-                })
-                const employees = await prisma.employee.findMany({
-                where: {
-                    id: {
-                        in: employeeTeams.map((team) => team.employee)
-                    }
-                }
-                });
-                if (employees) {
-                    return void res.status(200).json(employees);
-                }
-                return void res.status(400).end();
+                return getAllTeamEmployeesService(teamId, res);
             }
         }
     } catch (error) {
         return handleError(error, res)
     }
 }
-
-// TODO: Spezifikation der REST Schnittstelle

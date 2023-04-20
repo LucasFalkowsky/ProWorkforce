@@ -1,9 +1,9 @@
-import { prisma } from '@/lib/prisma';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { getIdTokenOrThrow, handleError, validateOrThrow } from '../helpers/handler-helper';
 import { HTTPMethod } from '../types/method';
 import { Project } from '@prisma/client';
 import { allProjectsQuerySchema } from '../../schemas/project-schema';
+import { getAllProjectsService } from '@/backend/services/project-service';
 
 export default async function handler(
     req: NextApiRequest,
@@ -17,19 +17,10 @@ export default async function handler(
 
         switch (method) {
             case HTTPMethod.GET: {
-                const allProjects = await prisma.project.findMany({
-                    where: { company: companyId }
-                })
-                console.log(allProjects);
-                if (allProjects) {
-                    return void res.status(200).json(allProjects);
-                }
-                return void res.status(400).end();
+                return getAllProjectsService(companyId, res);
             }
         }
     } catch (error) {
         return handleError(error, res)
     }
 }
-
-// TODO: Spezifikation der REST Schnittstelle
