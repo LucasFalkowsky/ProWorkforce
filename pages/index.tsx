@@ -1,15 +1,17 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
 import React from 'react';
 import { NextPage } from 'next';
-import styles from '../styles/Home.module.css';
 import { useUser } from '@/frontend/hooks/use-user';
-
-const inter = Inter({ subsets: ['latin'] });
+import { useRouter } from 'next/router';
+import { en } from '@/public/locales/index/en';
 
 const Home: NextPage = () => {
   const { user, isLoadingUser } = useUser('695c6ee6-7352-4247-9a6c-1a31c9f94db0', '');
   console.log(user);
+  
+  const router = useRouter();
+  const {locale} = router;
+  const t = locale === 'en' ? en : en;
 
   return (
     <>
@@ -22,7 +24,7 @@ const Home: NextPage = () => {
       <main>
         {isLoadingUser && (
           <>
-            Loading...
+            {t.loading}
           </>
         )} : (
           <>
