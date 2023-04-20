@@ -3,6 +3,8 @@
 
 generator client {
   provider = "prisma-client-js"
+  engineType = "binary"
+  binaryTargets = ["native", "linux-musl", "linux-arm64-openssl-1.1.x", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -12,56 +14,61 @@ datasource db {
 
 model User {
   id String @id @default(uuid())
-  username String @db.VarChar(250)
+  username String @db.VarChar()
   email String @unique
   company String?
 }
 
 model Company {
   id String @id @default(uuid())
-  name String @db.VarChar(250)
-  datasource String? @db.VarChar(128)
-  employees String[] @db.VarChar(128)
-  projects String[] @db.VarChar(128)
+  name String @db.VarChar()
+  datasource String? @db.VarChar()
 }
 
 model Employee {
   id String @id @default(uuid())
-  firstname String @db.VarChar(128)
-  lastname String @db.VarChar(128)
+  firstname String @db.VarChar()
+  lastname String @db.VarChar()
   workweek Int?
-  teams String[] @db.VarChar(128)
+  company String? @db.VarChar()
 }
 
 model Team {
   id String @id @default(uuid())
-  company String @db.VarChar(128)
-  name String @db.VarChar(128)
+  company String @db.VarChar()
+  name String @db.VarChar()
+}
+
+model EmployeeTeam {
+  id String @id @default(uuid())
+  employee String @db.VarChar()
+  team String @db.VarChar()
 }
 
 model Project {
   id String @id @default(uuid())
-  name String @db.VarChar(128)
-  customer String? @db.VarChar(250)
-  phases String[] @db.VarChar(128)
-  description String? @db.VarChar(128)
-  state State
+  name String @db.VarChar()
+  customer String? @db.VarChar()
+  company String @db.VarChar()
+  description String? @db.VarChar()
   startdate DateTime?
+  state State
 }
 
 model Phase {
   id String @id @default(uuid())
-  name String @db.VarChar(128)
+  name String @db.VarChar()
+  project String @db.VarChar()
   is_active Boolean
   startdate DateTime?
   enddate DateTime?
   delay Int?
-  employee_timeframes String[] @db.VarChar(128)
 }
 
 model EmployeeTimeframe {
   id String @id @default(uuid())
-  employee String @db.VarChar(128)
+  employee String @db.VarChar()
+  phase String @db.VarChar()
   startdate DateTime
   enddate DateTime
   workweek Int

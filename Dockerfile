@@ -4,16 +4,28 @@
 FROM node:alpine
 
 # create & set working directory
-RUN mkdir -p /usr/src
-WORKDIR /usr/src
+RUN mkdir -p /app
+WORKDIR /app
 
 # copy source files
-COPY . /usr/src
+COPY . /app
+
+# Copy package.js, package-lock.json and prisma to the /app working directory
+COPY package*.json /app
+COPY prisma ./prisma/
 
 # install dependencies
 RUN npm install
 
-# start app
+COPY . .
+
+# build app
 RUN npm run build
+
 EXPOSE 3000
-CMD ["sh", "-c", "npm run start & npm run storybook"]
+
+# generate db
+RUN npx prisma generate
+
+# start app and storybook
+CMD ["sh", "-c", "npm run dev & npm run storybook"]

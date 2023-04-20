@@ -2,13 +2,24 @@ import Head from 'next/head';
 import React from 'react';
 import { NextPage } from 'next';
 import { useUser } from '@/frontend/hooks/use-user';
+
+import { useCompany } from '@/frontend/hooks/use-company';
+import { useAllEmployees } from '@/frontend/hooks/use-all-employees';
+import { useAllProjects } from '@/frontend/hooks/use-all-projects';
+import { useAllPhases } from '@/frontend/hooks/use-all-phases';
 import { useRouter } from 'next/router';
 import { en } from '@/public/locales/index/en';
 
 const Home: NextPage = () => {
-  const { user, isLoadingUser } = useUser('695c6ee6-7352-4247-9a6c-1a31c9f94db0', '');
-  console.log(user);
-  
+  const { user } = useUser('c9bbe9b7-1578-4f06-9e63-4c82bfa4b4c1', 'asdkfwq0jfa');
+  const companyId = user?.company;
+  const { company } = useCompany(companyId!, 'asdkfwq0jfa');
+  const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
+  const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
+  const { allPhases } = useAllPhases(allProjects ? allProjects![0].id : '', 'asdkfwq0jfa')
+
+const Home: NextPage = () => {
+
   const router = useRouter();
   const {locale} = router;
   const t = locale === 'en' ? en : en;
@@ -22,15 +33,43 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        {isLoadingUser && (
-          <>
-            {t.loading}
-          </>
-        )} : (
-          <>
-            {user?.email}
-          </>
-        )
+        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'white' } }>
+          <h1>Datenbank Daten</h1>
+          <div>
+            <h3>User Data</h3>
+            <p>{user?.username} {company ? `von ${company.name}` : ''} | Kontakt: {user?.email}</p>
+            <h3>Company Employees</h3>
+            {employees?.map((employee, key) => {
+              return (
+                <p key={`${key}`}>
+                  Mitarbeitende Person {employee.firstname} {employee.lastname} | er / sie arbeitet {employee.workweek} Stunden pro Woche
+                </p>
+              )
+            })}
+            <h3>Die Firma {company?.name} hat folgende Projekte:</h3>
+            <ul>
+              {allProjects?.map((project, key) => {
+                return(
+                  <li key={`${key}`}>{project.name} für Kunde {project.customer} startet am {new Date(project.startdate!).toLocaleDateString()}</li>
+                )
+              })}
+            </ul>
+            {allProjects && allPhases && (
+              <>
+                <h3>Die Phasen von Projekt {allProjects![0].name}</h3><div>
+                  {allPhases!.map((phase) => {
+                    return (
+                      <div>
+                        <p>{phase.name} beginnt am {new Date(phase.startdate!).toLocaleDateString()}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+            
+          </div>
+        </div>
       </main>
     </>
   );

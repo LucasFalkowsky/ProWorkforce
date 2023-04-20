@@ -1,6 +1,7 @@
 version: '3'
 services:
   db:
+    container_name: db
     image: postgres
     restart: always
     environment:
@@ -11,15 +12,24 @@ services:
       - ${DB_PORT}:5432
     volumes:
       - ./data:/var/lib/postgresql/data
-  api:
-    build: .
-    ports:
-      - "3000:3000"
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app
     depends_on:
       - db
+    restart: always
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: ${DATABASE_CONTAINER_REF}
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
   storybook:
+    container_name: storybook
     build: .
     ports:
       - "6006:6006"
@@ -27,5 +37,5 @@ services:
       - db
     command: npm run storybook
     environment:
-      - DATABASE_URL=${DATABASE_URL}
-      - NODE_ENV=developmente
+      - DATABASE_URL=${DATABASE_CONTAINER_REF}
+      - NODE_ENV=development
