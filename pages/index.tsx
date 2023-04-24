@@ -16,9 +16,7 @@ const Home: NextPage = () => {
   const { company } = useCompany(companyId!, 'asdkfwq0jfa');
   const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
   const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
-  const { allPhases } = useAllPhases(allProjects ? allProjects![0].id : '', 'asdkfwq0jfa')
-
-const Home: NextPage = () => {
+  const { allPhases } = useAllPhases(allProjects ? allProjects![0].id! : '', 'asdkfwq0jfa')
 
   const router = useRouter();
   const {locale} = router;
@@ -34,7 +32,7 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <div style={{ width: '100vw', height: '100vh', backgroundColor: 'white' } }>
-          <h1>Datenbank Daten</h1>
+          <h1>{t.headline}</h1>
           <div>
             <h3>User Data</h3>
             <p>{user?.username} {company ? `von ${company.name}` : ''} | Kontakt: {user?.email}</p>
