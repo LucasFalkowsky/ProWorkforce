@@ -28,4 +28,4 @@ EXPOSE 3000
 RUN npx prisma generate
 
 # start app and storybook
-CMD npm run dev
+CMD ["sh", "-c", "npm run dev & npm run storybook"]
