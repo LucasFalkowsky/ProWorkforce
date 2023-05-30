@@ -7,8 +7,7 @@ import { useCompany } from '@/frontend/hooks/use-company';
 import { useAllEmployees } from '@/frontend/hooks/use-all-employees';
 import { useAllProjects } from '@/frontend/hooks/use-all-projects';
 import { useAllPhases } from '@/frontend/hooks/use-all-phases';
-import { useRouter } from 'next/router';
-import { en } from '@/public/locales/index/en';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Home: NextPage = () => {
   const { user } = useUser('c9bbe9b7-1578-4f06-9e63-4c82bfa4b4c1', 'asdkfwq0jfa');
@@ -17,10 +16,6 @@ const Home: NextPage = () => {
   const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
   const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
   const { allPhases } = useAllPhases(allProjects ? allProjects![0].id! : '', 'asdkfwq0jfa')
-
-  const router = useRouter();
-  const {locale} = router;
-  const t = locale === 'en' ? en : en;
 
   return (
     <>
@@ -32,7 +27,7 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <div style={{ width: '100vw', height: '100vh', backgroundColor: 'white' } }>
-          <h1>{t.headline}</h1>
+          <h1>healdine</h1>
           <div>
             <h3>User Data</h3>
             <p>{user?.username} {company ? `von ${company.name}` : ''} | Kontakt: {user?.email}</p>
@@ -72,5 +67,11 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export const getServerSideProps = async ({ locale }: any) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common']))
+    }
+});
 
 export default Home;
