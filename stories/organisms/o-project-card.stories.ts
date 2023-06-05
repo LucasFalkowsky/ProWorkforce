@@ -6,7 +6,7 @@ import imageFile3 from '../assets/Howard Wolowitz.png';
 import imageFile4 from '../assets/Leonard Hofstatter.png';
 import imageFile5 from '../assets/Penny Hofstatter.png';
 import projectIcon from '../assets/Bazinga.png';
-import { colors } from '../../frontend/components/atoms/a-employee-image';
+import { colors } from '../../frontend/styles/colors';
 import { State } from '@prisma/client';
 
 const startDate = new Date('2023-12-17T03:24:00');

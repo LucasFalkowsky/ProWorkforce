@@ -1,29 +1,14 @@
 import { EmployeeImage } from '../../frontend/components/atoms/a-employee-image';
 import { Meta, StoryObj } from '@storybook/react';
 import imageFile from '../assets/Amy Ferrah Fouler.png';
-
-enum colors {
-    PINK = 'pink',
-    RED = 'red',
-    YELLOW = 'yellow',
-    ORANGE = 'orange',
-    CYAN = 'cyan',
-    GREEN = 'green',
-    BLUE = 'blue',
-    PURPLE = 'purple',
-    GREEKBLUE = 'geekblue',
-    MAGENTA = 'magenta',
-    VOLCANO = 'volcano',
-    GOLD = 'gold',
-    LIME = 'lime',
-}
+import { colors } from '../../frontend/styles/colors';
 
 const meta: Meta<typeof EmployeeImage> = {
     title: 'atoms/EmployeeImage',
     component: EmployeeImage,
     tags: ['autodocs'],
     parameters: {
-        color: colors,
+        color: colors.GEEKBLUE,
     }
 };
 
@@ -35,17 +20,17 @@ const image = {
   alt: 'Amy Ferrah Fouler',
 };
 
-export const pink: Story = {
+export const cyan: Story = {
     args: {
         employeeImagePath: imageFile.src,
-        color: colors.PINK,
+        color: colors.CYAN,
     },
 };
 
-export const greekblue: Story = {
+export const geekblue: Story = {
     args: {
         employeeImagePath: imageFile.src,
-        color: colors.GREEKBLUE,
+        color: colors.GEEKBLUE,
     },
 };
 

@@ -5,7 +5,7 @@ import imageFile2 from '../assets/Bernadette Rostenkowsky.png';
 import imageFile3 from '../assets/Howard Wolowitz.png';
 import imageFile4 from '../assets/Leonard Hofstatter.png';
 import imageFile5 from '../assets/Penny Hofstatter.png';
-import { colors } from '../../frontend/components/atoms/a-employee-image';
+import { colors } from '../../frontend/styles/colors';
 
 const meta: Meta<typeof EmployeesImages> = {
     title: 'molecules/EmployeesImages',

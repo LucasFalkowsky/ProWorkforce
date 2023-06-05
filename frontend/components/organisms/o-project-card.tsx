@@ -1,4 +1,4 @@
-import { Badge, Col, Image, Row, Space, Tag } from 'antd';
+import { Col, Image, Row, Space, Tag } from 'antd';
 import React from 'react';
 import { PhaseCount } from '../atoms/a-phase-count';
 import { EmployeeImageProps, EmployeesImages } from '../molecules/m-employees-images';
@@ -25,11 +25,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
     return (
         <>
-            <Row align='middle' wrap={false} style={{ padding: '24px', border: '1px solid #d9d9d9', borderRadius: '5px' }}>
+            <Row align='middle' wrap={false} style={{ padding: '24px', border: '1px solid #', borderRadius: '5px' }}>
                 <Col span={12} flex='auto'>
                     <Space size={'small'} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
                         <Image src={projectIconPath} />
-                        <Col flex='' style={{ alignItems: 'flex-start' }}>
+                        <Col flex='auto' style={{ alignItems: 'flex-start' }}>
                             <Space size={'small'} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
                                 <Title level={5} style={{ margin: '0' }}>{projectName}</Title>
                                 <Tag color={tagColor}>{status}</Tag>
@@ -42,8 +42,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                     <PhaseCount phaseCount={totalPhasesCount} finishedPhaseCount={finishedPhasesCount} />
                 </Col>
                 <Col span={8} style={{ display: 'flex', justifyContent: 'right' }}>
-                    <Space size={'small'} style={{ display: 'flex', flexDirection: 'row'}}>
-                        <Title level={5}>Employees</Title>
+                    <Space size={'small'} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                        <Title level={5} style={{ margin: '0' }}>Employees</Title>
                         <EmployeesImages employeeImageColors={employeeImageColors} />
                     </Space>
                 </Col>
