@@ -1,0 +1,68 @@
+:export {
+  shiftLeft: -8px;
+  gapStandard: 8px;
+
+  paddingXSmall: 2px;
+  paddingSmall: 4px;
+  paddingStandard: 8px;
+  paddingLarge: 16px;
+  paddingHuge: 24px;
+
+  offsetOutline: -3px;
+  outlineNoColor: 2px solid;
+
+  borderMaxCapOffset: -1px;
+
+  xSmallBorderRadius: 2px;
+  smallBorderRadius: 4px;
+  standardBorderRadius: 8px;
+  largeBorderRadius: 16px;
+  hugeBorderRadius: 24px;
+  borderRadiusCircle: 50%;
+  
+  thinBorderNoColor: 1px solid;
+  mediumBorderNoColor: 2px solid;
+  mediumBorderDashedNoColor: 2px dashed;
+
+  boxShadowTopNoColor: 0 -2px 3px;
+  boxShadowRightNoColor: 2px 0 3px;
+  boxShadowRotatedRightNoColor: 2px -2px 2px;
+  boxShadowActiveNoColor: 0 0 2px;
+  boxShadowSelectedNoColor: inset 0 0 8px 2px;
+  boxShadowUpwardsNoColor: inset 0 -15px 10px -15px;
+
+  shortRotateRight: rotate(45deg);
+  shortRotateLeft: rotate(-45deg);
+
+  iconDiameter: 35px;
+
+  dayColumnWidth: 15px;
+  weekDisplayWidth: 105px; // day column width * 7 days
+  weekDisplayHeight: 40px;
+
+  teamCardWidth: 250px;
+  teamCardHeight: 100px;
+
+  maxWorktimeBorderThickness: 2px;
+
+  timeSlotHeight: 52px;
+
+  selectorMinWidth: 200px;
+
+  yearRowHeight: 70px;
+  rowHeight: 400px;
+  
+  navBarLogoBorderOpen: 100px;
+  navBarLogoBorderClosed: 30px;
+  navOpenWidth: 200px;
+  navClosedWidth: 47px;
+  navMenuHeight: calc(100vh - 148px);
+
+  layerTop: 100;
+  layerCenter: 50;
+  layerBottom: 0;
+
+  maxPopConfirmWidth: 200px;
+
+  assignedTeamsButtonHeight: 64px;
+}

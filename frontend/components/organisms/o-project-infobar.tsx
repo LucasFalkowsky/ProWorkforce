@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { Space } from 'antd';
 import { InfobarElement, ProjectInfobarElement } from '../molecules/m-project-infobar-element';
 import { colors, getAntDesignColor } from '../../styles/colors';
+import variables from '../../styles/variables.module.scss';
 
 type ProjectInfobarProps = {
     infobarElements: InfobarElement[],
@@ -19,9 +20,9 @@ const ProjectInfobar: React.FC<ProjectInfobarProps> = ({
                     display: 'inline-flex',
                     justifyContent: 'space-evenly',
                     width: '100%',
-                    padding: '24px 0',
-                    borderTop: `1px solid ${getAntDesignColor(colors.NEUTRAL)[2]}`,
-                    borderBottom: `1px solid ${getAntDesignColor(colors.NEUTRAL)[2]}`,
+                    padding: `${variables.paddingHuge} 0`,
+                    borderTop: `${variables.thinBorderNoColor} ${getAntDesignColor(colors.NEUTRAL)[2]}`,
+                    borderBottom: `${variables.thinBorderNoColor} ${getAntDesignColor(colors.NEUTRAL)[2]}`,
                 }}
             >
                 {infobarElements.map((infobarElement) => {

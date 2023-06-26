@@ -28,6 +28,7 @@ export const primary: Story = {
     args: {
         weekData: data,
         color: colors.CYAN,
+        rowHeight: '400px',
         isStart: true,
     },
 };

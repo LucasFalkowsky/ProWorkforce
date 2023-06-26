@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Select, SelectProps } from 'antd';
+import variables from '../../styles/variables.module.scss';
+import { t } from 'i18next';
+import '../../../pages/i18n.js'
 
 type TeamSelectProps = {
     teams: string[],
@@ -27,8 +30,8 @@ const TeamSelect: React.FC<TeamSelectProps> = ({
         <>
             <Select
                 mode="multiple"
-                style={{ ...addStyle, minWidth: '200px' }}
-                placeholder="select participating teams"
+                style={{ ...addStyle, minWidth: variables.selectorMinWidth }}
+                placeholder={`${t('o-new-project-modal-assigned-teams-placeholder')}`}
                 onChange={setSelectedTeams}
                 options={options}
                 value={selectedTeams}

@@ -25,9 +25,6 @@ export const draft: Story = {
     args: {
         teams: teams,
         status: State.DRAFT,
-        setStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 
@@ -35,9 +32,6 @@ export const ongoing: Story = {
     args: {
         teams: teams,
         status: State.ONGOING,
-        setStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 
@@ -45,9 +39,6 @@ export const completed: Story = {
     args: {
         teams: teams,
         status: State.COMPLETED,
-        setStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 
@@ -55,9 +46,6 @@ export const archived: Story = {
     args: {
         teams: teams,
         status: State.ARCHIVED,
-        setStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 

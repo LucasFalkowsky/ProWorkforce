@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
+import '../../../pages/i18n.js'
 
 type DateRangeProps = {
     startDate: Date;
@@ -11,18 +13,13 @@ type DateRangeProps = {
 const DateRange: React.FC<DateRangeProps> = ({
     startDate, endDate, primary,
 }) => {
+    const { t } = useTranslation();
+
     const { Text } = Typography;
     const router = useRouter();
 
-    const [lang, setLang] = useState<string>('en');
-
-    useEffect(() => {
-        const newLang = localStorage.getItem('lang') || router.locale || 'en';
-        setLang(newLang);
-      }, []);
-
     const formatDate = (date: Date) => {
-        return date.toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
+        return date.toLocaleDateString(`${t('a-date-range-lang')}`, { year: 'numeric', month: 'long', day: 'numeric' });
     };
 
     return (

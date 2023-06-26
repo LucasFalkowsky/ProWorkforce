@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from 'antd';
 import { colors, getAntDesignColor } from '../../styles/colors';
+import variables from '../../styles/variables.module.scss';
 
 type TeamIconProps = {
     team: string,
@@ -17,10 +18,10 @@ const TeamIcon: React.FC<TeamIconProps> = ({
         <>
             <Text 
                 style={{
-                    width: '35px',
-                    height: '35px',
+                    width: variables.iconDiameter,
+                    height: variables.iconDiameter,
                     backgroundColor: getAntDesignColor(color)[5],
-                    borderRadius: '50%',
+                    borderRadius: variables.borderRadiusCircle,
                     color: getAntDesignColor(colors.NEUTRAL)[0],
                     display: 'flex',
                     justifyContent: 'center',

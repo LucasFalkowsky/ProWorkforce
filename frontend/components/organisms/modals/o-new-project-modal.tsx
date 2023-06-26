@@ -1,7 +1,10 @@
-import { Col, Input, Modal, Form, DatePicker, Space, Select, SelectProps, Row } from 'antd';
+import { Col, Input, Modal, Form, DatePicker, Row } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TeamSelect } from '../../molecules/m-team-select';
+import variables from '../../../styles/variables.module.scss';
+import { useTranslation } from 'react-i18next';
+import '../../../../pages/i18n.js'
 
 type NewProjectModalProps = {
     isOpen: boolean,
@@ -12,11 +15,12 @@ type NewProjectModalProps = {
 const NewProjectModal: React.FC<NewProjectModalProps> = ({
     isOpen, setIsOpen, teams
 }) => {
+    const { t } = useTranslation();
 
     return (
         <>
             <Modal
-                title="Create new Project"
+                title={t('o-new-project-modal-title')}
                 centered
                 open={isOpen}
                 onOk={setIsOpen}
@@ -24,29 +28,29 @@ const NewProjectModal: React.FC<NewProjectModalProps> = ({
             >
                 <Form>
                     <Col>
-                        <Row style={{ display: 'flex', gap: '8px', alignItems: 'baseline' }}>
+                        <Row style={{ display: 'flex', gap: variables.gapStandard, alignItems: 'baseline' }}>
                             <Form.Item style={{ flex: '1' }}>
-                                <label>project pame</label>
-                                <Input placeholder='example project'  style={{ width: '100%' }}/>
+                                <label>{t('o-new-project-modal-project-name')}</label>
+                                <Input placeholder={`${t('o-new-project-modal-project-name-placeholder')}`} style={{ width: '100%' }}/>
                             </Form.Item>
                             <Form.Item style={{ flex: '1' }}>
-                                <label>start date</label>
-                                <DatePicker placeholder='select date'  style={{ width: '100%' }}/>
+                                <label>{t('o-new-project-modal-start-date')}</label>
+                                <DatePicker placeholder={`${t('o-new-project-modal-start-date-placeholder')}`}  style={{ width: '100%' }}/>
                             </Form.Item>
                         </Row>
-                        <Row style={{ display: 'flex', gap: '8px', alignItems: 'baseline' }}>
+                        <Row style={{ display: 'flex', gap: variables.gapStandard, alignItems: 'baseline' }}>
                             <Form.Item style={{ flex: '1' }}>
-                                <label>assigned teams</label>
+                                <label>{t('o-new-project-modal-assigned-teams')}</label>
                                 <TeamSelect teams={teams} addStyle={{ width: '100%' }} />
                             </Form.Item>
                             <Form.Item style={{ flex: '1' }}>
-                                <label>customer</label>
-                                <Input placeholder='set customer name'  style={{ width: '100%' }}/>
+                                <label>{t('o-new-project-modal-customer')}</label>
+                                <Input placeholder={`${t('o-new-project-modal-customer-placeholder')}`}  style={{ width: '100%' }}/>
                             </Form.Item>
                         </Row>
                         <Form.Item>
-                                <label>project description</label>
-                                <TextArea placeholder='describe what the project is about'  style={{ width: '100%' }}/>
+                                <label>{t('o-new-project-modal-project-description')}</label>
+                                <TextArea placeholder={`${t('o-new-project-modal-project-description-placeholder')}`}  style={{ width: '100%' }}/>
                         </Form.Item>
                     </Col>
                 </Form>

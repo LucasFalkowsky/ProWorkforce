@@ -30,36 +30,24 @@ const displayState = (state: State) => {
 export const draft: Story = {
     args: {
         status: State.DRAFT,
-        setProjectStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 
 export const ongoing: Story = {
     args: {
         status: State.ONGOING,
-        setProjectStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 
 export const completed: Story = {
     args: {
         status: State.COMPLETED,
-        setProjectStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 
 export const archived: Story = {
     args: {
         status: State.ARCHIVED,
-        setProjectStatus: (state) => {
-            console.log(state);
-        },
     },
 };
 

@@ -1,18 +1,72 @@
 import { colors } from '../../frontend/styles/colors';
-import { WeekData } from '../../frontend/components/molecules/m-week-row';
+import { DailyTeamData, WeekData } from '../../frontend/components/molecules/m-week-row';
 import { CalendarGrid } from '../../frontend/components/organisms/o-calendar-grid';
 import { Meta, StoryObj } from '@storybook/react';
+import { TeamProps } from '../../frontend/components/organisms/o-calendar-grid';
+
+const teams: TeamProps[] = [
+    {
+        teamId: '1',
+        teamName: 'development',
+        teamColor: colors.GEEKBLUE,
+    },
+    {
+        teamId: '2',
+        teamName: 'design',
+        teamColor: colors.MAGENTA,
+    }
+];
+
+const firstDaysTeamData: DailyTeamData[][] = [
+    // Day 1
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 6, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 15, maxWorktime: 24 },
+    ],
+    // Day 2
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 23, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 9, maxWorktime: 24 },
+    ],
+    // Day 3
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 10, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 19, maxWorktime: 24 },
+    ],
+    // Day 4
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 13, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 7, maxWorktime: 24 },
+    ],
+    // Day 5
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 9, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 18, maxWorktime: 24 },
+    ],
+    // Day 6
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 14, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 6, maxWorktime: 24 },
+    ],
+    // Day 7
+    [
+        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 8, maxWorktime: 24 },
+        { teamId: '2', teamColor: colors.MAGENTA, worktime: 21, maxWorktime: 24 }
+    ]
+];
+
+const worktime = [8, 14, 20];
 
 const data: WeekData = {
     week: 45,
     days: [
-      { day: 1, date: '2023-11-06' },
-      { day: 2, date: '2023-11-07' },
-      { day: 3, date: '2023-11-08' },
-      { day: 4, date: '2023-11-09' },
-      { day: 5, date: '2023-11-10', isNonWorkingDay: true },
-      { day: 6, date: '2023-11-11', isNonWorkingDay: true },
-      { day: 0, date: '2023-11-12', isNonWorkingDay: true },
+      { day: 1, date: '2023-11-06', teamData: firstDaysTeamData[0] },
+      { day: 2, date: '2023-11-07', teamData: firstDaysTeamData[1] },
+      { day: 3, date: '2023-11-08', teamData: firstDaysTeamData[2] },
+      { day: 4, date: '2023-11-09', teamData: firstDaysTeamData[3] },
+      { day: 5, date: '2023-11-10', teamData: firstDaysTeamData[4], isNonWorkingDay: true },
+      { day: 6, date: '2023-11-11', teamData: firstDaysTeamData[5], isNonWorkingDay: true },
+      { day: 0, date: '2023-11-12', teamData: firstDaysTeamData[6], isNonWorkingDay: true },
     ],
 };
   
@@ -49,15 +103,24 @@ for (let i = 0; i < 20; i++) {
         const currentDate = addDays(previousDate, j + 1);
         const day: number = (j + 1) % 7; // Calculate the day number based on the current day index
     
+        const daysTeamData = teams.map((team) => {
+            return {
+                teamId: team.teamId,
+                teamColor: team.teamColor,
+                worktime: worktime[Math.floor(Math.random()*worktime.length)],
+                maxWorktime: 16,
+            }
+        });
+
         const isNonWorkingDay: boolean = isWeekend(currentDate) || isNationalHoliday();
     
         newWeekData.days.push({
             day,
             date: currentDate.toISOString().split('T')[0],
+            teamData: daysTeamData,
             isNonWorkingDay,
         });
     }
-  
     weekDataArray.push(newWeekData);
 }
 
@@ -73,6 +136,19 @@ type Story = StoryObj<typeof CalendarGrid>;
 export const primary: Story = {
     args: {
         weeks: weekDataArray,
-        color: colors.CYAN,
+        color: colors.NEUTRAL,
+        assignedTeamsOpen: false,
+        teams: teams,
+        selectedTeam: null,
+    },
+};
+
+export const selectedTeam: Story = {
+    args: {
+        weeks: weekDataArray,
+        color: colors.NEUTRAL,
+        assignedTeamsOpen: true,
+        teams: teams,
+        selectedTeam: '1',
     },
 };
