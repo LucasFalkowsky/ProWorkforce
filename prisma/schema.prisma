@@ -63,6 +63,9 @@ model Phase {
   startdate DateTime?
   enddate DateTime?
   delay Int?
+  isDone Boolean
+  isAcknowledged Boolean
+  dependencies String? @db.VarChar()
 }
 
 model EmployeeTimeframe {
