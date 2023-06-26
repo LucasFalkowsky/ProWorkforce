@@ -28,3 +28,14 @@ services:
       - /app/.next
     ports:
       - "3000:3000"
+  storybook:
+    container_name: storybook
+    build: .
+    ports:
+      - "6006:6006"
+    depends_on:
+      - db
+    command: npm run storybook
+    environment:
+      - DATABASE_URL=${DATABASE_CONTAINER_REF}
+      - NODE_ENV=development
