@@ -11,11 +11,12 @@ WORKDIR /app
 COPY . /app
 
 # Copy package.js, package-lock.json and prisma to the /app working directory
-COPY package*.json /app
+COPY package.json /app
+COPY package-lock.json /app
 COPY prisma ./prisma/
 
 # install dependencies
-RUN npm install
+RUN npm ci
 
 COPY . .
 

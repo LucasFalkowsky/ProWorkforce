@@ -1,0 +1,4 @@
+# exclude storybook
+.storybook
+stories
+storybook-static

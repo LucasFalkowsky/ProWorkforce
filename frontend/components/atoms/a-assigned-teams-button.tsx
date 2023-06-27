@@ -4,7 +4,7 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { colors, getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type AssignedTeamsButtonProps = {
     isOpen: boolean,

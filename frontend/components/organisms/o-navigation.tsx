@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { colors, getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type NavigationProps = {
     isOpen: boolean,
@@ -55,4 +55,4 @@ const Navigation: React.FC<NavigationProps> = ({
     );
 };
 
-export { Navigation };
+export default Navigation;

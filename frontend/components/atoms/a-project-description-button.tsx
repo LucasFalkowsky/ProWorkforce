@@ -1,7 +1,7 @@
 import { EditOutlined, SaveOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type ProjectDescriptionButtonProps = {
     edit: boolean,

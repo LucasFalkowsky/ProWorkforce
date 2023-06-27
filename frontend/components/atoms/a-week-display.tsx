@@ -3,7 +3,7 @@ import { Typography } from 'antd';
 import { colors, getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type WeekDisplayProps = {
     week: number,

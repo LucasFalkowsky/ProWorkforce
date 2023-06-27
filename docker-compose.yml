@@ -15,7 +15,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     container_name: app
     depends_on:
       - db

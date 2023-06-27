@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Select, SelectProps } from 'antd';
 import variables from '../../styles/variables.module.scss';
 import { t } from 'i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type TeamSelectProps = {
     teams: string[],

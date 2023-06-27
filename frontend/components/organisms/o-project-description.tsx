@@ -4,7 +4,7 @@ import TextArea from 'antd/es/input/TextArea';
 import { ProjectDescriptionButton } from '../atoms/a-project-description-button';
 import variables from '../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type ProjectDescriptionProps = {
     description: string,

@@ -2,7 +2,7 @@ import React from 'react';
 import { Space, Typography } from 'antd';
 import { GroupOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../src/i18n'
 
 type PhaseCountProps = {
     phaseCount: number;

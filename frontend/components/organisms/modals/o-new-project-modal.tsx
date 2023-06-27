@@ -4,7 +4,7 @@ import React from 'react';
 import { TeamSelect } from '../../molecules/m-team-select';
 import variables from '../../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../../pages/i18n.js'
+import '../../../../src/i18n'
 
 type NewProjectModalProps = {
     isOpen: boolean,

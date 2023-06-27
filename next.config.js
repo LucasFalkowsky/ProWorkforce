@@ -1,7 +1,8 @@
 const path = require('path')
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+module.exports = {
   webpack: config => {
     config.watchOptions = {
       poll: 1000,
@@ -10,10 +11,6 @@ const nextConfig = {
     return config
   },
   reactStrictMode: true,
-}
-
-module.exports = {
-  nextConfig,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },

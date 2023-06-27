@@ -5,7 +5,7 @@ import { Typography } from 'antd';
 import { calculateTimeEstimation } from '../../utils/get-time-estimation';
 import variables from '../../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../../pages/i18n.js'
+import '../../../../src/i18n'
 
 type CalculateTimeModalProps = {
     isOpen: boolean,

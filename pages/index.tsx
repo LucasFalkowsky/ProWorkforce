@@ -15,7 +15,6 @@ const Home: NextPage = () => {
   const { company } = useCompany(companyId!, 'asdkfwq0jfa');
   const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
   const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
-  const { allPhases } = useAllPhases(allProjects ? allProjects![0].id! : '', 'asdkfwq0jfa')
 
   return (
     <>
@@ -47,19 +46,6 @@ const Home: NextPage = () => {
                 )
               })}
             </ul>
-            {allProjects && allPhases && (
-              <>
-                <h3>Die Phasen von Projekt {allProjects![0].name}</h3><div>
-                  {allPhases!.map((phase) => {
-                    return (
-                      <div>
-                        <p>{phase.name} beginnt am {new Date(phase.startdate!).toLocaleDateString()}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            )}
             
           </div>
         </div>
@@ -67,11 +53,5 @@ const Home: NextPage = () => {
     </>
   );
 };
-
-export const getServerSideProps = async ({ locale }: any) => ({
-    props: {
-        ...(await serverSideTranslations(locale, ['common']))
-    }
-});
 
 export default Home;
