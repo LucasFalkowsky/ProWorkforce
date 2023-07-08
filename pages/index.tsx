@@ -1,21 +1,12 @@
 import Head from 'next/head';
 import React from 'react';
 import { NextPage } from 'next';
-import { useUser } from '@/frontend/hooks/use-user';
+import { getAntDesignColor } from '@/frontend/styles/colors';
+import { Colors } from '@prisma/client';
 
-import { useCompany } from '@/frontend/hooks/use-company';
-import { useAllEmployees } from '@/frontend/hooks/use-all-employees';
-import { useAllProjects } from '@/frontend/hooks/use-all-projects';
-import { useAllPhases } from '@/frontend/hooks/use-all-phases';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+const bg = getAntDesignColor(Colors.NEUTRAL)[0];
 
 const Home: NextPage = () => {
-  const { user } = useUser('c9bbe9b7-1578-4f06-9e63-4c82bfa4b4c1', 'asdkfwq0jfa');
-  const companyId = user?.company;
-  const { company } = useCompany(companyId!, 'asdkfwq0jfa');
-  const { employees } = useAllEmployees(companyId!, 'asdkfwq0jfa');
-  const { allProjects } = useAllProjects(companyId!, 'asdkfwq0jfa');
-
   return (
     <>
       <Head>
@@ -24,31 +15,7 @@ const Home: NextPage = () => {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <main>
-        <div style={{ width: '100vw', height: '100vh', backgroundColor: 'white' } }>
-          <h1>healdine</h1>
-          <div>
-            <h3>User Data</h3>
-            <p>{user?.username} {company ? `von ${company.name}` : ''} | Kontakt: {user?.email}</p>
-            <h3>Company Employees</h3>
-            {employees?.map((employee, key) => {
-              return (
-                <p key={`${key}`}>
-                  Mitarbeitende Person {employee.firstname} {employee.lastname} | er / sie arbeitet {employee.workweek} Stunden pro Woche
-                </p>
-              )
-            })}
-            <h3>Die Firma {company?.name} hat folgende Projekte:</h3>
-            <ul>
-              {allProjects?.map((project, key) => {
-                return(
-                  <li key={`${key}`}>{project.name} für Kunde {project.customer} startet am {new Date(project.startdate!).toLocaleDateString()}</li>
-                )
-              })}
-            </ul>
-            
-          </div>
-        </div>
+      <main style={{ backgroundColor: bg, minHeight: '100vh' }}>
       </main>
     </>
   );

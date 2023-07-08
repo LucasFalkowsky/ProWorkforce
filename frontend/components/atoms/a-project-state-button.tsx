@@ -36,10 +36,10 @@ const ProjectStateButton: React.FC<ProjectStateButtonProps> = ({
             return (
                 <Space size={'small'} style={{ display: 'inline-flex' }}>
                     <Button icon={<RocketOutlined />} onClick={() => setProjectStatus(State.ONGOING)}>
-                    {t('a-project-statebutton-republish')}
+                        {t('a-project-statebutton-republish')}
                     </Button>
                     <Button type="primary" icon={<ExperimentOutlined />} onClick={() => setProjectStatus(State.DRAFT)}>
-                    {t('a-project-statebutton-redraft')}
+                        {t('a-project-statebutton-redraft')}
                     </Button>
                 </Space>
             );

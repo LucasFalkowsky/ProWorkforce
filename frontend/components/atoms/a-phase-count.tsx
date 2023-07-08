@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import '../../../src/i18n'
 
 type PhaseCountProps = {
-    phaseCount: number;
-    finishedPhaseCount: number;
+    phaseCount?: number;
+    finishedPhaseCount?: number;
 }
 
 const PhaseCount: React.FC<PhaseCountProps> = ({
@@ -17,7 +17,11 @@ const PhaseCount: React.FC<PhaseCountProps> = ({
 
     return (
         <>
-            <Space size={'small'}><GroupOutlined /><Text>{finishedPhaseCount} / {phaseCount} {t('a-phase-count-phase')}</Text></Space>
+            {phaseCount && finishedPhaseCount ? (
+                <Space size={'small'}><GroupOutlined /><Text>{`${finishedPhaseCount} / ${phaseCount} ${t('a-phase-count-phase')}`}</Text></Space>
+            ) : (
+                <Text>{t('o-project-card-no-phases')}</Text>
+            )}
         </>
     );
 };

@@ -16,9 +16,21 @@ const getAllPhases = async ([url, idToken]: [string, string]): Promise<Phase[]> 
     return fetchGet<Phase[]>(url, { idToken })
 }
 
-const useAllPhases = (projectId: string, idToken: string): AllPhasesReturnType => {
+const useAllPhases = (projectId: string): AllPhasesReturnType => {
     const { data, error, isValidating, mutate } = useSWR<Phase[], FetchError>(
-        [`${allPhasesRoute}${projectId}`, idToken], getAllPhases,
+        [`${allPhasesRoute}${projectId}`], getAllPhases,
+    );
+    return {
+        allPhases: data,
+        allPhasesError: error,
+        isLoadingAllPhases: isValidating,
+        mutateAllPhases: mutate,
+    }
+}
+
+const useAllCompanyPhases = (companyId: string): AllPhasesReturnType => {
+    const { data, error, isValidating, mutate } = useSWR<Phase[], FetchError>(
+        [`${allPhasesRoute}${companyId}`], getAllPhases,
     );
     return {
         allPhases: data,
@@ -29,5 +41,6 @@ const useAllPhases = (projectId: string, idToken: string): AllPhasesReturnType =
 }
 
 export {
-    useAllPhases
+    useAllPhases,
+    useAllCompanyPhases
 }

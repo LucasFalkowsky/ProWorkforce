@@ -12,12 +12,12 @@ export default async function handler(
     const { method } = req
 
     try {
-        const idToken = getIdTokenOrThrow(req);
         const { companyId  } = validateOrThrow(allProjectsQuerySchema, req.query);
 
         switch (method) {
             case HTTPMethod.GET: {
-                return getAllProjectsService(companyId, res);
+                const allProjects = await getAllProjectsService(companyId, res);
+                return allProjects;
             }
         }
     } catch (error) {

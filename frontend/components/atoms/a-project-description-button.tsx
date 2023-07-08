@@ -1,5 +1,6 @@
 import { EditOutlined, SaveOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import variables from "../../styles/variables.module.scss";
 import { useTranslation } from 'react-i18next';
 import '../../../src/i18n'
 
@@ -14,13 +15,13 @@ const ProjectDescriptionButton: React.FC<ProjectDescriptionButtonProps> = ({
     const { t } = useTranslation();
     if (edit) {
         return (
-            <Button type={'text'} style={{ marginTop: '10px' }} onClick={() => setEditDescription(false)}>
+            <Button type={'text'} onClick={() => setEditDescription(false)}>
                 <SaveOutlined /> {t('a-project-description-button-finish-editing')}
             </Button>
         );
     }
     return (
-        <Button type={'text'} style={{ marginTop: '10px' }} onClick={() => setEditDescription(true)}>
+        <Button type={'text'} onClick={() => setEditDescription(true)}>
             <EditOutlined /> {t('a-project-description-button-start-editing')}
         </Button>
     );

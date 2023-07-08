@@ -6,44 +6,45 @@ import { calculateTimeEstimation } from '../../utils/get-time-estimation';
 import variables from '../../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
 import '../../../../src/i18n'
+import { set } from 'superstruct';
 
 type CalculateTimeModalProps = {
     isOpen: boolean,
+    optimisticGuess: number | null,
+    realisticGuess: number | null,
+    pessimisticGuess: number | null,
     setIsOpen: () => void,
-    setTime: (time: number) => void,
+    setTime: (optimisticGuess: number, realisticGuess: number, pessimisticGuess: number) => void,
 }
 
 const CalculateTimeModal: React.FC<CalculateTimeModalProps> = ({
-    isOpen, setIsOpen, setTime
+    isOpen, optimisticGuess, realisticGuess, pessimisticGuess, setIsOpen, setTime
 }) => {
     const { t } = useTranslation();
+    const { Text, Title } = Typography;
+
     const [showExplaination, setShowExplaination] = useState(false);
     const [estimatedTime, setEstimatedTime] = useState<number | null >();
     const [inofficialTime, setInofficialTime] = useState<number | null>();
-    const [values, setValues] = useState({
-        optimisticGuess: 0,
-        realisticGuess: 0,
-        pessimisticGuess: 0,
-    });
-    
-    const handleChange = (fieldName: string, value: number | null) => {
-        setValues((prevValues) => ({
-        ...prevValues,
-        [fieldName]: value,
-        }));
-    };
+    const [optimistic, setOptimistic] = useState<number | null>(optimisticGuess);
+    const [realistic, setRealistic] = useState<number | null>(realisticGuess);
+    const [pessimistic, setPessimistic] = useState<number | null>(pessimisticGuess);
 
     useEffect(() => {
-        const timeEstimation = calculateTimeEstimation(values);
+        if (!optimistic || !realistic || !pessimistic) return;
+        const timeEstimation = calculateTimeEstimation(optimistic, realistic, pessimistic);
         if (timeEstimation) {
             setEstimatedTime(timeEstimation.estimation);
             setInofficialTime(timeEstimation.externalEstimation);
             return;
         }
         setEstimatedTime(null);
-    }, [values]);
+    }, [optimistic, realistic, pessimistic]);
 
-    const { Text, Title } = Typography;
+    const handleOk = () => {
+        if (!optimistic || !realistic || !pessimistic) return;
+        setTime(optimistic, realistic, pessimistic)
+    }
 
     return (
         <>
@@ -58,7 +59,7 @@ const CalculateTimeModal: React.FC<CalculateTimeModalProps> = ({
                     </div>}
                 centered
                 open={isOpen}
-                onOk={() => console.log('OK')}
+                onOk={handleOk}
                 onCancel={setIsOpen}
             >
                 <Row style={{ display: 'inline-flex', gap: variables.gapStandard, width: '100%' }}>
@@ -70,8 +71,7 @@ const CalculateTimeModal: React.FC<CalculateTimeModalProps> = ({
                                     addonAfter={'hours'}
                                     defaultValue={0}
                                     style={{ width: '100%' }}
-                                    onChange={(value) => handleChange('optimisticGuess', value)}
-                                    onBlur={(event) => handleChange('optimisticGuess', Number(event.target.value))}
+                                    onChange={(value) => setOptimistic(value)}
                                 />
                             </Form.Item>
                             <Form.Item>
@@ -80,8 +80,7 @@ const CalculateTimeModal: React.FC<CalculateTimeModalProps> = ({
                                     addonAfter={'hours'}
                                     defaultValue={0}
                                     style={{ width: '100%' }}
-                                    onChange={(value) => handleChange('realisticGuess', value)}
-                                    onBlur={(event) => handleChange('realisticGuess', Number(event.target.value))}
+                                    onChange={(value) => setRealistic(value)}
                                 />
                             </Form.Item>
                             <Form.Item>
@@ -90,8 +89,7 @@ const CalculateTimeModal: React.FC<CalculateTimeModalProps> = ({
                                     addonAfter={'hours'}
                                     defaultValue={0}
                                     style={{ width: '100%' }}
-                                    onChange={(value) => handleChange('pessimisticGuess', value)}
-                                    onBlur={(event) => handleChange('pessimisticGuess', Number(event.target.value))}
+                                    onChange={(value) => setPessimistic(value)}
                                 />
                             </Form.Item>
                         </Col>

@@ -1,6 +1,6 @@
+import { Colors } from '@prisma/client';
 import { DraggableTimeSlot } from '../../frontend/components/atoms/a-draggable-time-slot';
 import { Meta, StoryObj } from '@storybook/react';
-import { colors } from '../../frontend/styles/colors';
 
 const meta: Meta<typeof DraggableTimeSlot> = {
     title: 'atoms/DraggableTimeSlot',
@@ -20,7 +20,7 @@ export const normal: Story = {
         offsetX: '0',
         length: '300px',
         team: 'research',
-        color: colors.LIME,
+        color: Colors.LIME,
     },
 };
 
@@ -29,7 +29,7 @@ export const warning: Story = {
         offsetX: '0',
         length: '300px',
         team: 'research',
-        color: colors.LIME,
+        color: Colors.LIME,
         warning: [
             'There are no employees working on this project phase yet.',
             'There is still time on this phase yet to be covered by employees of the Team Design.'

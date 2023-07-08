@@ -1,17 +1,17 @@
+import { Colors } from '@prisma/client';
 import { WeekRow, WeekData } from '../../frontend/components/molecules/m-week-row';
 import { Meta, StoryObj } from '@storybook/react';
-import { colors } from '../../frontend/styles/colors';
 
 const data: WeekData = {
     week: 23,
     days: [
-        { day: 1, date: '2023-06-05' },
-        { day: 2, date: '2023-06-06' },
-        { day: 3, date: '2023-06-07' },
-        { day: 4, date: '2023-06-08' },
-        { day: 5, date: '2023-06-09', isNonWorkingDay: true },
-        { day: 6, date: '2023-06-10', isNonWorkingDay: true },
-        { day: 0, date: '2023-06-11', isNonWorkingDay: true },
+        { day: 1, date: '2023-06-05', teamData: [] },
+        { day: 2, date: '2023-06-06', teamData: [] },
+        { day: 3, date: '2023-06-07', teamData: [] },
+        { day: 4, date: '2023-06-08', teamData: [] },
+        { day: 5, date: '2023-06-09', teamData: [], isNonWorkingDay: true },
+        { day: 6, date: '2023-06-10', teamData: [], isNonWorkingDay: true },
+        { day: 0, date: '2023-06-11', teamData: [], isNonWorkingDay: true },
     ],
 }
 
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof WeekRow>;
 export const primary: Story = {
     args: {
         weekData: data,
-        color: colors.CYAN,
+        color: Colors.CYAN,
         rowHeight: '400px',
         isStart: true,
     },

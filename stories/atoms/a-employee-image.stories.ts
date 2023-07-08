@@ -1,14 +1,14 @@
 import { EmployeeImage } from '../../frontend/components/atoms/a-employee-image';
 import { Meta, StoryObj } from '@storybook/react';
 import imageFile from '../assets/Amy Ferrah Fouler.png';
-import { colors } from '../../frontend/styles/colors';
+import { Colors } from '@prisma/client';
 
 const meta: Meta<typeof EmployeeImage> = {
     title: 'atoms/EmployeeImage',
     component: EmployeeImage,
     tags: ['autodocs'],
     parameters: {
-        color: colors.GEEKBLUE,
+        color: Colors.GEEKBLUE,
     }
 };
 
@@ -23,27 +23,27 @@ const image = {
 export const cyan: Story = {
     args: {
         employeeImagePath: imageFile.src,
-        color: colors.CYAN,
+        color: Colors.CYAN,
     },
 };
 
 export const geekblue: Story = {
     args: {
         employeeImagePath: imageFile.src,
-        color: colors.GEEKBLUE,
+        color: Colors.GEEKBLUE,
     },
 };
 
 export const magenta: Story = {
     args: {
         employeeImagePath: imageFile.src,
-        color: colors.MAGENTA,
+        color: Colors.MAGENTA,
     },
 };
 
 export const lime: Story = {
     args: {
         employeeImagePath: imageFile.src,
-        color: colors.LIME,
+        color: Colors.LIME,
     },
 };

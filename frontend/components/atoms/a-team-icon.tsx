@@ -1,15 +1,17 @@
 import React from 'react';
 import { Typography } from 'antd';
-import { colors, getAntDesignColor } from '../../styles/colors';
+import { getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
+import { Colors } from '@prisma/client';
 
 type TeamIconProps = {
     team: string,
-    color: colors,
+    color: Colors,
+    isWhite?: boolean,
 };
 
 const TeamIcon: React.FC<TeamIconProps> = ({
-    team, color,
+    team, color, isWhite
 }) => {
     const { Text } = Typography;
     const antColor = getAntDesignColor(color);
@@ -20,9 +22,9 @@ const TeamIcon: React.FC<TeamIconProps> = ({
                 style={{
                     width: variables.iconDiameter,
                     height: variables.iconDiameter,
-                    backgroundColor: getAntDesignColor(color)[5],
+                    backgroundColor: isWhite ? getAntDesignColor(Colors.NEUTRAL)[0] : getAntDesignColor(color)[5],
                     borderRadius: variables.borderRadiusCircle,
-                    color: getAntDesignColor(colors.NEUTRAL)[0],
+                    color: isWhite ? getAntDesignColor(color)[5] : getAntDesignColor(Colors.NEUTRAL)[0],
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',

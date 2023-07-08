@@ -1,10 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
-  engineType = "binary"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl", "linux-arm64-openssl-1.1.x", "linux-musl-openssl-3.0.x"]
+  engineType    = "binary"
 }
 
 datasource db {
@@ -13,68 +10,88 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  username String @db.VarChar()
-  email String @unique
-  company String?
+  id       String  @id @default(uuid())
+  username String  @db.VarChar
+  email    String  @unique
+  company  String?
 }
 
 model Company {
-  id String @id @default(uuid())
-  name String @db.VarChar()
-  datasource String? @db.VarChar()
+  id         String  @id @default(uuid())
+  name       String  @db.VarChar
+  datasource String? @db.VarChar
 }
 
 model Employee {
-  id String @id @default(uuid())
-  firstname String @db.VarChar()
-  lastname String @db.VarChar()
-  workweek Int?
-  company String? @db.VarChar()
+  id        String  @id @default(uuid())
+  firstname String  @db.VarChar
+  lastname  String  @db.VarChar
+  workweek  Int
+  company   String? @db.VarChar
+  image     String? @db.VarChar
 }
 
 model Team {
-  id String @id @default(uuid())
-  company String @db.VarChar()
-  name String @db.VarChar()
+  id      String @id @default(uuid())
+  company String @db.VarChar
+  name    String @db.VarChar
+  color   Colors
 }
 
 model EmployeeTeam {
-  id String @id @default(uuid())
-  employee String @db.VarChar()
-  team String @db.VarChar()
+  id       String @id @default(uuid())
+  employee String @db.VarChar
+  team     String @db.VarChar
+}
+
+model PhaseTeam {
+  id    String @id @default(uuid())
+  phase String @db.VarChar
+  team  String @db.VarChar
 }
 
 model Project {
-  id String @id @default(uuid())
-  name String @db.VarChar()
-  customer String? @db.VarChar()
-  company String @db.VarChar()
-  description String? @db.VarChar()
-  startdate DateTime?
-  state State
+  id          String   @id @default(uuid())
+  name        String   @db.VarChar
+  customer    String?  @db.VarChar
+  company     String   @db.VarChar
+  description String?  @db.VarChar
+  startdate   DateTime
+  state       State
+  banner      String?  @db.VarChar
+  image       String?  @db.VarChar
+}
+
+model ProjectTeam {
+  id      String @id @default(uuid())
+  project String @db.VarChar
+  team    String @db.VarChar
 }
 
 model Phase {
-  id String @id @default(uuid())
-  name String @db.VarChar()
-  project String @db.VarChar()
-  is_active Boolean
-  startdate DateTime?
-  enddate DateTime?
-  delay Int?
-  isDone Boolean
-  isAcknowledged Boolean
-  dependencies String? @db.VarChar()
+  id                String   @id @default(uuid())
+  name              String   @db.VarChar
+  project           String   @db.VarChar
+  is_active         Boolean  @default(false)
+  startDate         DateTime @default(now())
+  endDate           DateTime @default(now())
+  optimisticGuess   Int?
+  mostLikelyGuess   Int?
+  pessimisticGuess  Int?
+  delay             Int?
+  dependencies      String?  @db.VarChar
+  is_acknowledged   Boolean  @default(false)
+  is_done           Boolean  @default(false)
+  phaseteam         String   @db.VarChar
 }
 
 model EmployeeTimeframe {
-  id String @id @default(uuid())
-  employee String @db.VarChar()
-  phase String @db.VarChar()
-  startdate DateTime
-  enddate DateTime
-  workweek Int
+  id        String   @id @default(uuid())
+  employee  String   @db.VarChar
+  phase     String   @db.VarChar
+  startDate DateTime
+  endDate   DateTime
+  workweek  Int
 }
 
 enum State {
@@ -82,4 +99,23 @@ enum State {
   ONGOING
   COMPLETED
   ARCHIVED
+}
+
+enum Colors {
+  PRIMARY
+  NEUTRAL
+  RED
+  YELLOW
+  ORANGE
+  CYAN
+  GREEN
+  BLUE
+  PURPLE
+  GEEKBLUE
+  MAGENTA
+  VOLCANO
+  GOLD
+  LIME
+  GRAY
+  GREY
 }

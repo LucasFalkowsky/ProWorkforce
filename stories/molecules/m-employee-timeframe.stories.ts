@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { colors } from '../../frontend/styles/colors';
-import { DayData, EmployeeTimeframe } from '../../frontend/components/molecules/m-employee-timeframe';
+import { DayData, EmployeeTimeframe } from '../../frontend/components/molecules/m-timeframe';
 import { randomInt } from 'crypto';
+import { Colors } from '@prisma/client';
 
 const data: DayData = {
     date: '2023-11-06',
@@ -64,6 +64,6 @@ type Story = StoryObj<typeof EmployeeTimeframe>;
 export const primary: Story = {
     args: {
         dayData: dayDataArray,
-        color: colors.CYAN,
+        color: Colors.CYAN,
     },
 };

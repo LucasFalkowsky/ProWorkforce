@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import { Row, Typography, Space, Popconfirm } from 'antd';
-import { colors, getAntDesignColor } from '../../styles/colors';
+import { getAntDesignColor } from '../../styles/colors';
 import { TeamIcon } from './a-team-icon';
 import { CheckOutlined, WarningOutlined } from '@ant-design/icons';
 import variables from '../../styles/variables.module.scss';
+import { Colors } from '@prisma/client';
 
 type DraggableTimeSlotProps = {
     offsetX: string,
     length: string,
     team: string,
-    color: colors,
+    color: Colors,
     warning?: string[],
     confirmWarning: () => void,
     setNewLength: (length: string) => void,
@@ -21,7 +22,7 @@ const DraggableTimeSlot: React.FC<DraggableTimeSlotProps> = ({
 }) => {
     const { Text } = Typography;
     const teamColor = getAntDesignColor(color);
-    const grey = getAntDesignColor(colors.NEUTRAL);
+    const grey = getAntDesignColor(Colors.NEUTRAL);
 
     useEffect(() => {
         let adjustLength = false;

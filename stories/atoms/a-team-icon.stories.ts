@@ -1,4 +1,4 @@
-import { colors } from '../../frontend/styles/colors';
+import { Colors } from '@prisma/client';
 import { TeamIcon } from '../../frontend/components/atoms/a-team-icon';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -8,7 +8,7 @@ const meta: Meta<typeof TeamIcon> = {
     tags: ['autodocs'],
     parameters: {
         team: 'research',
-        color: colors.GEEKBLUE,
+        color: Colors.GEEKBLUE,
     },
 };
     
@@ -18,6 +18,6 @@ type Story = StoryObj<typeof TeamIcon>;
 export const primary: Story = {
     args: {
         team: 'research',
-        color: colors.GEEKBLUE,
+        color: Colors.GEEKBLUE,
     },
 }; 

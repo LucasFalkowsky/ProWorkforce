@@ -1,12 +1,9 @@
-type TimeEstimationProps = {
-    optimisticGuess: number | undefined;
-    realisticGuess: number | undefined;
-    pessimisticGuess: number | undefined;
-};
-
-export const calculateTimeEstimation = (values: TimeEstimationProps) => {
+export const calculateTimeEstimation = (
+    optimisticGuess: number | undefined,
+    realisticGuess: number | undefined,
+    pessimisticGuess: number | undefined,
+) => {
     // get values for PERT estimation
-    const { optimisticGuess, realisticGuess, pessimisticGuess } = values;
     if (!optimisticGuess || !realisticGuess || !pessimisticGuess) {
         return;
     };

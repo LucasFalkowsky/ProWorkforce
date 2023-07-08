@@ -6,6 +6,8 @@ i18n.use(initReactI18next).init({
     resources: {
         en: {
             translation: {
+                "country-code": "GB",
+
                 "a-assigned-teams-button-text": "Assigned Teams",
                 
                 "a-date-range-lang": "en",
@@ -19,7 +21,7 @@ i18n.use(initReactI18next).init({
                 "a-project-statebutton-complete": "Complete Project",
                 "a-project-statebutton-archive": "Archive Project",
                 "a-project-statebutton-republish": "Republish Project",
-                "a-project-statebutton-redrafe": "Redraft Project",
+                "a-project-statebutton-redraft": "Redraft Project",
 
                 "a-week-display-week": "CW",
 
@@ -37,6 +39,11 @@ i18n.use(initReactI18next).init({
                 "o-new-project-modal-title": "Create New Project",
                 "o-new-project-modal-project-name": "Project Name",
                 "o-new-project-modal-project-name-placeholder": "Example Project",
+                "o-new-project-modal-project-name-required-message": "You need to provide a project name.",
+                "o-new-project-modal-project-date-required-message": "You need to provide a start date.",
+                "o-new-project-modal-project-teams-required-message": "You need to assign at least 1 Team to this project.",
+                "o-new-project-modal-project-customer-required-message": "You need to insert the name of the Customer.",
+                "o-new-project-modal-project-description-required-message": "You need to provide a project description.",
                 "o-new-project-modal-start-date": "Start Date",
                 "o-new-project-modal-start-date-placeholder": "Select Date",
                 "o-new-project-modal-assigned-teams": "Assigned Teams",
@@ -45,6 +52,23 @@ i18n.use(initReactI18next).init({
                 "o-new-project-modal-customer-placeholder": "Set Customer Name",
                 "o-new-project-modal-project-description": "Project Description",
                 "o-new-project-modal-project-description-placeholder": "Describe what the project is about",
+                "o-new-project-modal-footer-submit": "Create New Project",
+                "o-new-project-modal-footer-cancel": "Cancel",
+
+                "o-new-phase-modal-title": "Create New Project Phase",
+                "o-new-phase-modal-phase-name": "Project Phase Name",
+                "o-new-phase-modal-phase-name-placeholder": "Select Phase Name",
+                "o-new-phase-modal-phase-dependency": "Dependency",
+                "o-new-phase-modal-phase-dependency-placeholder": "Select Key Phase",
+                "o-new-phase-modal-phase-start-date": "Start Date",
+                "o-new-phase-modal-phase-end-date": "End Date",
+                "o-new-phase-modal-footer-submit": "Create New Phase",
+                "o-new-phase-modal-footer-cancel": "Cancel",
+
+                "o-edit-project-info-modal-title": "Edit Project Information",
+                "o-edit-project-info-modal-cancel": "Cancel",
+                "o-edit-project-info-modal-submit": "Save Changes",
+                "o-edit-timeframe-modal-delete": "Delete Timeframe",
             
                 "o-navigation-overview": "Overview",
                 "o-navigation-projects": "Projects",
@@ -52,7 +76,12 @@ i18n.use(initReactI18next).init({
                 "o-navigation-settings": "Settings",
                 "o-navigation-logout": "Logout",
 
+                "o-project-card-date-undefined": "No Date Defined",
+                "o-project-card-no-employees": "No Employees Assigned",
                 "o-project-card-employees": "Employees",
+                "o-project-card-no-phases": "No Phases Defined",
+
+                "o-employee-card-workweek": "hours/week",
 
                 "o-project-description-title": "Project Description",
                 "o-project-description-placeholder": "Describe what the project is about",
@@ -65,11 +94,29 @@ i18n.use(initReactI18next).init({
                 "o-planning-toolbar-team": "Team",
                 "o-planning-toolbar-capacity-allocation": "Staff Capacity Allocation",
 
+                "o-project-infobar-startdate": "Start Date",
+                "o-project-infobar-startdate-undefined": "No Date Defined",
+                "o-project-infobar-enddate": "End Date",
+                "o-project-infobar-enddate-undefined": "No Date Defined",
+                "o-project-infobar-customer": "Customer",
+                "o-project-infobar-customer-undefined": "No Customer Defined",
+                "o-project-infobar-phases": "Phases",
+                "o-project-infobar-phases-undefined": "No Phases Defined",
+                "o-project-infobar-edit": "Edit Information",
+
                 "calculate-time-estimation": "Calculate Time Estimation",
+
+                "p-project-add-project-button": "Add Project",
+                "p-projects-overview-title": "Project Overview",
+                "p-project-button-switch-left": "Project Overview",
+                "p-project-button-switch-right": "Project Planning",
+                "p-project-defautl-banner": "https://res.cloudinary.com/dubyrwfam/image/upload/v1688232113/proWorkforce/DALL_E_2023-07-01_19.20.03_-_a_default_banner_image_for_a_project_development_tool_ysohao.png"
             }
         },
         de: {
             translation: {
+                "country-code": "DE",
+
                 "a-assigned-teams-button-text": "Zugeordnete Teams",
                 
                 "a-date-range-lang": "de",
@@ -100,6 +147,11 @@ i18n.use(initReactI18next).init({
                 "o-new-project-modal-title": "Neues Projekt Erstellen",
                 "o-new-project-modal-project-name": "Projekt Name",
                 "o-new-project-modal-project-name-placeholder": "Beispiel Projekt",
+                "o-new-project-modal-project-name-required-message": "Du musst einen Projektnamen angeben.",
+                "o-new-project-modal-project-date-required-message": "Du musst ein Startdatum festlegen.",
+                "o-new-project-modal-project-teams-required-message": "Du musst mindestens ein Team dem Projekt zuordnen.",
+                "o-new-project-modal-project-customer-required-message": "Du musst den Namen des Kunden angeben.",
+                "o-new-project-modal-project-description-required-message": "Du musst eine Projektbeschreibung verfassen.",
                 "o-new-project-modal-start-date": "Start Datum",
                 "o-new-project-modal-start-date-placeholder": "Datum Wählen",
                 "o-new-project-modal-assigned-teams": "Zugeordnete Teams",
@@ -108,6 +160,18 @@ i18n.use(initReactI18next).init({
                 "o-new-project-modal-customer-placeholder": "Kundenname Eingeben",
                 "o-new-project-modal-project-description": "Projekt Beschreibung",
                 "o-new-project-modal-project-description-placeholder": "Beschreibe, um was es in diesem Projekt geht",
+                "o-new-project-modal-footer-submit": "Neues Projekt Erstellen",
+                "o-new-project-modal-footer-cancel": "Abbrechen",
+
+                "o-new-phase-modal-title": "Neue Phase Erstellen",
+                "o-new-phase-modal-phase-name": "Projektphasenname",
+                "o-new-phase-modal-phase-name-placeholder": "Name für die Phase wählen",
+                "o-new-phase-modal-phase-dependency": "Abhängigkeiten",
+                "o-new-phase-modal-phase-dependency-placeholder": "Schlüsselphase wählen",
+                "o-new-phase-modal-phase-start-date": "Start Datum",
+                "o-new-phase-modal-phase-end-date": "End Datum",
+                "o-new-phase-modal-footer-submit": "Neue Phase Anlegen",
+                "o-new-phase-modal-footer-cancel": "Abbrechen",
             
                 "o-navigation-overview": "Übersicht",
                 "o-navigation-projects": "Projekte",
@@ -115,7 +179,12 @@ i18n.use(initReactI18next).init({
                 "o-navigation-settings": "Einstellungen",
                 "o-navigation-logout": "Ausloggen",
 
+                "o-project-card-date-undefined": "Datum nicht festgelegt",
+                "o-project-card-no-employees": "Keine Mitarbeitenden zugewiesen",
                 "o-project-card-employees": "Mitarbeitende",
+                "o-project-card-no-phases": "Keine Phasen definiert",
+
+                "o-employee-card-workweek": "Stunden/Woche",
 
                 "o-project-description-title": "Projektbeschreibung",
                 "o-project-description-placeholder": "Beschreibe, um was es in diesem Projekt geht",
@@ -128,7 +197,23 @@ i18n.use(initReactI18next).init({
                 "o-planning-toolbar-team": "Team",
                 "o-planning-toolbar-capacity-allocation": "Personal-Kapazitäts-Zuweisung",
 
+                "o-project-infobar-startdate": "Startdatum",
+                "o-project-infobar-startdate-undefined": "Kein Datum Definiert",
+                "o-project-infobar-enddate": "Enddatum",
+                "o-project-infobar-enddate-undefined": "Kein Datum Definiert",
+                "o-project-infobar-customer": "Kunde",
+                "o-project-infobar-customer-undefined": "Kein Kunde Definiert",
+                "o-project-infobar-phases": "Phasen",
+                "o-project-infobar-phases-undefined": "Keine Phasen Definiert",
+                "o-project-infobar-edit": "Infos Bearbeiten",
+
                 "calculate-time-estimation": "Zeitschätzung Berechnen",
+
+                "p-project-add-project-button": "Projekt Hinzufügen",
+                "p-projects-overview-title": "Projektübersicht",
+                "p-project-button-switch-left": "Projektübersicht",
+                "p-project-button-switch-right": "Projektplanung",
+                "p-project-defautl-banner": "https://res.cloudinary.com/dubyrwfam/image/upload/v1688232113/proWorkforce/DALL_E_2023-07-01_19.20.03_-_a_default_banner_image_for_a_project_development_tool_ysohao.png"
             }
         }
     },

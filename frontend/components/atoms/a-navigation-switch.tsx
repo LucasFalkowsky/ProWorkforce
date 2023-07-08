@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import { colors, getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
+import { Colors } from '@prisma/client';
+import { getAntDesignColor } from '@/frontend/styles/colors';
 
 type NavigationSwitchProps = {
     isOpen: boolean,
@@ -11,6 +12,8 @@ type NavigationSwitchProps = {
 const NavigationSwitch: React.FC<NavigationSwitchProps> = ({
     isOpen, clicked,
 }) => {
+    const [isHovered, setIsHovered] = React.useState<boolean>(false);
+
     return (
         <>
             <div style={{
@@ -19,19 +22,21 @@ const NavigationSwitch: React.FC<NavigationSwitchProps> = ({
                 backgroundColor: 'white',
                 transform: variables.shortRotateRight,
                 transformOrigin: 'center center',
-                boxShadow: `${variables.boxShadowRotatedRightNoColor} ${getAntDesignColor(colors.NEUTRAL)[3]}`,
+                boxShadow: `${variables.boxShadowRotatedRightNoColor} ${getAntDesignColor(Colors.NEUTRAL)[3]}`,
                 marginLeft: '-21.5px',
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
                 zIndex: variables.layerCenter,
+                cursor: isHovered ? 'pointer' : 'default',
             }}
-            onClick={() => {clicked}}
+            onMouseOver={(e) => setIsHovered(true)}
+            onClick={clicked}
             >
                 {isOpen ? (
-                    <LeftOutlined style={{ transform: variables.shortRotateLeft, color: getAntDesignColor(colors.NEUTRAL)[4] }} />
+                    <LeftOutlined style={{ transform: variables.shortRotateLeft, color: getAntDesignColor(Colors.NEUTRAL)[4] }} />
                 ) : (
-                    <RightOutlined style={{ transform: variables.shortRotateLeft, color: getAntDesignColor(colors.NEUTRAL)[4] }} />
+                    <RightOutlined style={{ transform: variables.shortRotateLeft, color: getAntDesignColor(Colors.NEUTRAL)[4] }} />
                 )
                 }
             </div>

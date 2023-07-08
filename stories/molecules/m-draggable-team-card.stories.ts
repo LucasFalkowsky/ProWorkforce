@@ -1,4 +1,4 @@
-import { colors } from '../../frontend/styles/colors';
+import { Colors } from '@prisma/client';
 import { DraggableTeamCard } from '../../frontend/components/molecules/m-draggable-team-card';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -8,7 +8,7 @@ const meta: Meta<typeof DraggableTeamCard> = {
     tags: ['autodocs'],
     parameters: {
         team: 'research',
-        color: colors.GEEKBLUE,
+        color: Colors.GEEKBLUE,
         isSelected: false
     },
 };
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof DraggableTeamCard>;
 export const normal: Story = {
     args: {
         team: 'research',
-        color: colors.GEEKBLUE,
+        color: Colors.GEEKBLUE,
         isSelected: false
     },
 }; 

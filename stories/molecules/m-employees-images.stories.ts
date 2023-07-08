@@ -5,7 +5,7 @@ import imageFile2 from '../assets/Bernadette Rostenkowsky.png';
 import imageFile3 from '../assets/Howard Wolowitz.png';
 import imageFile4 from '../assets/Leonard Hofstatter.png';
 import imageFile5 from '../assets/Penny Hofstatter.png';
-import { colors } from '../../frontend/styles/colors';
+import { Colors } from '@prisma/client';
 
 const meta: Meta<typeof EmployeesImages> = {
     title: 'molecules/EmployeesImages',
@@ -19,10 +19,10 @@ type Story = StoryObj<typeof EmployeesImages>;
 export const primary: Story = {
     args: {
         employeeImageColors:[
-            {employeeImagePath: imageFile1.src, color: colors.CYAN},
-            {employeeImagePath: imageFile2.src, color: colors.GEEKBLUE},
-            {employeeImagePath: imageFile3.src, color: colors.MAGENTA},
-            {employeeImagePath: imageFile4.src, color: colors.GEEKBLUE},
-            {employeeImagePath: imageFile5.src, color: colors.CYAN},]
+            {employeeImagePath: imageFile1.src, color: Colors.CYAN},
+            {employeeImagePath: imageFile2.src, color: Colors.GEEKBLUE},
+            {employeeImagePath: imageFile3.src, color: Colors.MAGENTA},
+            {employeeImagePath: imageFile4.src, color: Colors.GEEKBLUE},
+            {employeeImagePath: imageFile5.src, color: Colors.CYAN},]
     },
 };

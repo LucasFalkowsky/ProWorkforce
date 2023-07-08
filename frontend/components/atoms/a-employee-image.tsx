@@ -1,11 +1,12 @@
 import React from 'react';
 import { Avatar } from 'antd';
-import { colors, getAntDesignColor } from '../../styles/colors';
+import { getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
+import { Colors } from '@prisma/client';
 
 type EmployeeImageProps = {
     employeeImagePath: string
-    color: colors
+    color: Colors
     shift?: boolean
 }
 
@@ -21,4 +22,4 @@ const EmployeeImage: React.FC<EmployeeImageProps> = ({
     );
 };
 
-export { EmployeeImage, colors };
+export { EmployeeImage, Colors };

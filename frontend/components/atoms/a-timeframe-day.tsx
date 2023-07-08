@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Space } from 'antd';
-import { colors, getAntDesignColor } from '../../styles/colors';
+import { getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
+import { Colors } from '@prisma/client';
 
-type EmployeeTimeframeDayProps = {
+type TimeframeDayProps = {
     keyProp: string,
-    color: colors,
+    color: Colors,
     worktime: number,
     maxWorktime: number,
+    scaleFactor: number,
     date: string,
     isNonWorkingDay?: boolean,
     previousWorktime: number,
@@ -15,10 +17,10 @@ type EmployeeTimeframeDayProps = {
     highestWorktimeValue: number,
 }
 
-const EmployeeTimeframeDay: React.FC<EmployeeTimeframeDayProps> = ({
-    keyProp, color, worktime, maxWorktime, date, isNonWorkingDay, previousWorktime, nextWorktime, highestWorktimeValue
+const TimeframeDay: React.FC<TimeframeDayProps> = ({
+    keyProp, color, worktime, maxWorktime, scaleFactor, date, isNonWorkingDay, previousWorktime, nextWorktime, highestWorktimeValue
 }) => {
-    const red = getAntDesignColor(colors.RED);
+    const red = getAntDesignColor(Colors.RED);
     const [teamColor, setTeamColor] = useState(getAntDesignColor(color));
 
     const [allertBorderLeft, setAllertBorderLeft] = useState<string>();
@@ -30,7 +32,6 @@ const EmployeeTimeframeDay: React.FC<EmployeeTimeframeDayProps> = ({
 
     const teamCardHeight = parseInt(variables.teamCardHeight.replace('px', ''));
     const maxHeight = teamCardHeight - 10;
-    const scaleFactor = maxHeight / highestWorktimeValue;
     const capacityLimitHeight = maxWorktime * scaleFactor;
     const currentHeight = scaleFactor * worktime;
     const nextHeight = scaleFactor * nextWorktime;
@@ -163,4 +164,4 @@ const EmployeeTimeframeDay: React.FC<EmployeeTimeframeDayProps> = ({
     );
 };
 
-export { EmployeeTimeframeDay };
+export { TimeframeDay };

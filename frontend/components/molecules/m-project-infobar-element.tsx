@@ -1,7 +1,8 @@
 import React from 'react';
 import { Col, Space } from 'antd';
 import { Typography } from 'antd';
-import { colors, getAntDesignColor } from '../../styles/colors';
+import { getAntDesignColor } from '../../styles/colors';
+import { Colors } from '@prisma/client';
 
 export type InfobarElement = {
     icon: JSX.Element,
@@ -13,7 +14,7 @@ const ProjectInfobarElement: React.FC<InfobarElement> = ({
     icon, title, value
 }) => {
     const { Text } = Typography;
-    const color = getAntDesignColor(colors.GOLD);
+    const color = getAntDesignColor(Colors.GOLD);
     return (
         <>
             <Col style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

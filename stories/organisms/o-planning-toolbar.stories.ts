@@ -1,7 +1,6 @@
 import { PlanningToolbar } from '../../frontend/components/organisms/o-planning-toolbar';
 import { Meta, StoryObj } from '@storybook/react';
-import { State } from '@prisma/client';
-import { colors } from '../../frontend/styles/colors';
+import { Colors, State } from '@prisma/client';
 
 const team = 'development';
 
@@ -21,7 +20,7 @@ type Story = StoryObj<typeof PlanningToolbar>;
 export const draft: Story = {
     args: {
         team: team,
-        teamColor: colors.GEEKBLUE,
+        teamColor: Colors.GEEKBLUE,
         status: State.DRAFT,
         plannedTime: 120,
         optimisticGuess: 240,
@@ -33,7 +32,7 @@ export const draft: Story = {
 export const ongoing: Story = {
     args: {
         team: team,
-        teamColor: colors.GEEKBLUE,
+        teamColor: Colors.GEEKBLUE,
         status: State.ONGOING,
         optimisticGuess: 240,
         realisticGuess: 310,
@@ -44,7 +43,7 @@ export const ongoing: Story = {
 export const completed: Story = {
     args: {
         team: team,
-        teamColor: colors.GEEKBLUE,
+        teamColor: Colors.GEEKBLUE,
         status: State.COMPLETED,
         optimisticGuess: 240,
         realisticGuess: 310,
@@ -55,7 +54,7 @@ export const completed: Story = {
 export const archived: Story = {
     args: {
         team: team,
-        teamColor: colors.GEEKBLUE,
+        teamColor: Colors.GEEKBLUE,
         status: State.ARCHIVED,
         optimisticGuess: 240,
         realisticGuess: 310,

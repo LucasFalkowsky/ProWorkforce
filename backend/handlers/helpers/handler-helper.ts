@@ -12,6 +12,7 @@ function validateOrThrow<T>(
     if (val) {
       return value as T;
     }
+    console.log(err)
     throw err;
   }
 

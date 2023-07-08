@@ -1,4 +1,4 @@
-import { DayData } from "../molecules/m-employee-timeframe";
+import { DayData } from "../molecules/m-timeframe";
 
 export function getHighestWorktime(days: DayData[]): number {
     let highestWorktime = 0;
@@ -10,4 +10,16 @@ export function getHighestWorktime(days: DayData[]): number {
     })
       
     return highestWorktime;
-  }
+}
+
+export function getHighestMaxWorktime(days: DayData[]): number {
+    let highestMaxWorktime = 0;
+  
+    days.forEach((day) => {
+        if (day.maxWorktime > highestMaxWorktime) {
+            highestMaxWorktime = day.maxWorktime;
+        }
+    })
+      
+    return highestMaxWorktime;
+};

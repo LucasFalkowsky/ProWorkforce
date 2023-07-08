@@ -16,7 +16,7 @@ COPY package-lock.json /app
 COPY prisma ./prisma/
 
 # install dependencies
-RUN npm ci
+RUN npm install
 
 COPY . .
 

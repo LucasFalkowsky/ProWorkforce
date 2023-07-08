@@ -4,6 +4,8 @@ import fetchGet from './utils/http/get'
 import FetchError from './utils/http/fetch-error'
 
 const employeeRoute = '/api/all-employees/'
+const projectEmployeeRoute = '/api/project-employees/'
+const phaseEmployeeRoute = '/api/phase-employees/'
 
 type AllEmployeesReturnType = {
     employees: Employee[] | undefined,
@@ -28,6 +30,40 @@ const useAllEmployees = (companyId: string, idToken: string): AllEmployeesReturn
     }
 }
 
+const getProjectEmployees = async ([url, idToken]: [string, string]): Promise<Employee[]> => {
+    return fetchGet<Employee[]>(url, { idToken })
+}
+
+const useAllProjectEmployees = (projectId: string): AllEmployeesReturnType => {
+    const { data, error, isValidating, mutate } = useSWR<Employee[], FetchError>(
+        [`${projectEmployeeRoute}${projectId}`], getProjectEmployees,
+    );
+    return {
+        employees: data,
+        employeeError: error,
+        isLoadingemployee: isValidating,
+        mutateEmployee: mutate,
+    }
+}
+
+const getPhaseEmployees = async ([url, idToken]: [string, string]): Promise<Employee[]> => {
+    return fetchGet<Employee[]>(url, { idToken })
+}
+
+const useAllPhaseEmployees = (phaseId: string): AllEmployeesReturnType => {
+    const { data, error, isValidating, mutate } = useSWR<Employee[], FetchError>(
+        [`${phaseEmployeeRoute}${phaseId}`], getPhaseEmployees,
+    );
+    return {
+        employees: data,
+        employeeError: error,
+        isLoadingemployee: isValidating,
+        mutateEmployee: mutate,
+    }
+}
+
 export {
     useAllEmployees,
+    useAllProjectEmployees,
+    useAllPhaseEmployees,
 }

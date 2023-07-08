@@ -1,57 +1,57 @@
-import { colors } from '../../frontend/styles/colors';
 import { DailyTeamData, WeekData } from '../../frontend/components/molecules/m-week-row';
 import { CalendarGrid } from '../../frontend/components/organisms/o-calendar-grid';
 import { Meta, StoryObj } from '@storybook/react';
 import { TeamProps } from '../../frontend/components/organisms/o-calendar-grid';
+import { Colors } from '@prisma/client';
 
 const teams: TeamProps[] = [
     {
         teamId: '1',
         teamName: 'development',
-        teamColor: colors.GEEKBLUE,
+        teamColor: Colors.GEEKBLUE,
     },
     {
         teamId: '2',
         teamName: 'design',
-        teamColor: colors.MAGENTA,
+        teamColor: Colors.MAGENTA,
     }
 ];
 
 const firstDaysTeamData: DailyTeamData[][] = [
     // Day 1
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 6, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 15, maxWorktime: 24 },
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 6, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 15, maxWorktime: 24 },
     ],
     // Day 2
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 23, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 9, maxWorktime: 24 },
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 23, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 9, maxWorktime: 24 },
     ],
     // Day 3
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 10, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 19, maxWorktime: 24 },
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 10, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 19, maxWorktime: 24 },
     ],
     // Day 4
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 13, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 7, maxWorktime: 24 },
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 13, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 7, maxWorktime: 24 },
     ],
     // Day 5
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 9, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 18, maxWorktime: 24 },
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 9, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 18, maxWorktime: 24 },
     ],
     // Day 6
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 14, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 6, maxWorktime: 24 },
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 14, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 6, maxWorktime: 24 },
     ],
     // Day 7
     [
-        { teamId: '1', teamColor: colors.GEEKBLUE, worktime: 8, maxWorktime: 24 },
-        { teamId: '2', teamColor: colors.MAGENTA, worktime: 21, maxWorktime: 24 }
+        { teamId: '1', teamColor: Colors.GEEKBLUE, worktime: 8, maxWorktime: 24 },
+        { teamId: '2', teamColor: Colors.MAGENTA, worktime: 21, maxWorktime: 24 }
     ]
 ];
 
@@ -136,7 +136,7 @@ type Story = StoryObj<typeof CalendarGrid>;
 export const primary: Story = {
     args: {
         weeks: weekDataArray,
-        color: colors.NEUTRAL,
+        color: Colors.NEUTRAL,
         assignedTeamsOpen: false,
         teams: teams,
         selectedTeam: null,
@@ -146,7 +146,7 @@ export const primary: Story = {
 export const selectedTeam: Story = {
     args: {
         weeks: weekDataArray,
-        color: colors.NEUTRAL,
+        color: Colors.NEUTRAL,
         assignedTeamsOpen: true,
         teams: teams,
         selectedTeam: '1',

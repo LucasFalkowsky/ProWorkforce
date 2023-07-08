@@ -6,8 +6,7 @@ import imageFile3 from '../assets/Howard Wolowitz.png';
 import imageFile4 from '../assets/Leonard Hofstatter.png';
 import imageFile5 from '../assets/Penny Hofstatter.png';
 import projectIcon from '../assets/Bazinga.png';
-import { colors } from '../../frontend/styles/colors';
-import { State } from '@prisma/client';
+import { Colors, State } from '@prisma/client';
 
 const startDate = new Date('2023-12-17T03:24:00');
 const endDate = new Date('2024-01-17T03:24:00');
@@ -26,11 +25,11 @@ export const primary: Story = {
         totalPhasesCount: 4,
         finishedPhasesCount: 2,
         employeeImageColors:[
-            {employeeImagePath: imageFile1.src, color: colors.CYAN},
-            {employeeImagePath: imageFile2.src, color: colors.GEEKBLUE},
-            {employeeImagePath: imageFile3.src, color: colors.MAGENTA},
-            {employeeImagePath: imageFile4.src, color: colors.GEEKBLUE},
-            {employeeImagePath: imageFile5.src, color: colors.CYAN},
+            {employeeImagePath: imageFile1.src, color: Colors.CYAN},
+            {employeeImagePath: imageFile2.src, color: Colors.GEEKBLUE},
+            {employeeImagePath: imageFile3.src, color: Colors.MAGENTA},
+            {employeeImagePath: imageFile4.src, color: Colors.GEEKBLUE},
+            {employeeImagePath: imageFile5.src, color: Colors.CYAN},
         ],
         projectIconPath: projectIcon.src,
         projectName: 'Bazinga',

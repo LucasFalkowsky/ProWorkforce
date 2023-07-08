@@ -8,7 +8,7 @@ class FetchError extends Error {
       super(message);
       this.status = status;
     }
-  }
-  
-  export default FetchError;
+}
+
+export default FetchError;
   

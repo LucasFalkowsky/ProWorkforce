@@ -1,6 +1,7 @@
 import { CalendarOutlined, CrownOutlined, ShareAltOutlined } from "@ant-design/icons"
 import { Progress } from "antd"
-import { colors, getAntDesignColor } from "../../styles/colors"
+import { getAntDesignColor } from "../../styles/colors"
+import { Colors } from "@prisma/client"
 
 const getShareIcon = () => {
     return <ShareAltOutlined />
@@ -15,7 +16,7 @@ const getCrownIcon = () => {
 }
 
 const getProgressElement = () => {
-    return <Progress percent={50} steps={5} size={'small'} strokeColor={getAntDesignColor(colors.GOLD)[5]} />
+    return <Progress percent={50} steps={5} size={'small'} strokeColor={getAntDesignColor(Colors.GOLD)[5]} />
 }
 
 export {

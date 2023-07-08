@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Select, SelectProps } from 'antd';
 import variables from '../../styles/variables.module.scss';
 import { t } from 'i18next';
 import '../../../src/i18n'
+import { Team } from '@prisma/client';
 
 type TeamSelectProps = {
-    teams: string[],
+    teams: Team[],
+    selectedTeams: Team[],
     addStyle?: React.CSSProperties,
+    onSetTeams?: (teams: string[]) => void,
 }
 
 const TeamSelect: React.FC<TeamSelectProps> = ({
-    teams, addStyle
+    teams, selectedTeams, addStyle, onSetTeams,
 }) => {
     const options: SelectProps['options'] = [];
-    const [selectedTeams, setSelectedTeams] = useState<string[]>();
+    const [selected, setSelected] = useState<string[]>(selectedTeams.map((team) => team.id));
 
-    useEffect(() => {
-        console.log(selectedTeams);
-    }, [selectedTeams]);
-    
     teams.forEach((team) => {
       options.push({
-        label: team,
-        value: team,
+        label: team.name,
+        value: team.id,
       });
     });
+
+    useEffect(() => {
+        if (onSetTeams) {
+            onSetTeams(selected);
+        }
+    }, [selected]);
 
     return (
         <>
@@ -32,9 +37,9 @@ const TeamSelect: React.FC<TeamSelectProps> = ({
                 mode="multiple"
                 style={{ ...addStyle, minWidth: variables.selectorMinWidth }}
                 placeholder={`${t('o-new-project-modal-assigned-teams-placeholder')}`}
-                onChange={setSelectedTeams}
+                onChange={setSelected}
                 options={options}
-                value={selectedTeams}
+                value={selected}
             />
         </>
     );

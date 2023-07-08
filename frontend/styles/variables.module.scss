@@ -1,12 +1,26 @@
 :export {
   shiftLeft: -8px;
   gapStandard: 8px;
+  gapLarge: 16px;
+  gapHuge: 24px;
+  gapXHuge: 32px;
+  gapXXHuge: 40px;
 
   paddingXSmall: 2px;
   paddingSmall: 4px;
   paddingStandard: 8px;
   paddingLarge: 16px;
   paddingHuge: 24px;
+  paddingXHuge: 32px;
+  paddingXXHuge: 40px;
+
+  marginXSmall: 2px;
+  marginSmall: 4px;
+  marginStandard: 8px;
+  marginLarge: 16px;
+  marginHuge: 24px;
+  marginXHuge: 32px;
+  marginXXHuge: 40px;
 
   offsetOutline: -3px;
   outlineNoColor: 2px solid;
@@ -35,10 +49,13 @@
   shortRotateLeft: rotate(-45deg);
 
   iconDiameter: 35px;
+  projectIconDiameter: 50px;
 
   dayColumnWidth: 15px;
   weekDisplayWidth: 105px; // day column width * 7 days
   weekDisplayHeight: 40px;
+
+  phaseRowHeight: 47px;
 
   teamCardWidth: 250px;
   teamCardHeight: 100px;
@@ -54,7 +71,7 @@
   
   navBarLogoBorderOpen: 100px;
   navBarLogoBorderClosed: 30px;
-  navOpenWidth: 200px;
+  navOpenWidth: 125px;
   navClosedWidth: 47px;
   navMenuHeight: calc(100vh - 148px);
 
@@ -65,4 +82,11 @@
   maxPopConfirmWidth: 200px;
 
   assignedTeamsButtonHeight: 64px;
+  bannerImageWidth: 100%;
+  bannerImageHeight: 200px;
+
+  transitionStandard: '0.5s ease-in-out';
+
+  maxWidthStandard: 1200px;
+  maxWidthLarge: 100%;
 }

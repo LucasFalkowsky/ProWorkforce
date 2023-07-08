@@ -1,12 +1,12 @@
 import React from 'react';
 import { EmployeeImage } from '../atoms/a-employee-image';
-import { colors } from '../../styles/colors';
 import { Row } from 'antd';
 import variables from '../../styles/variables.module.scss';
+import { Colors } from '@prisma/client';
 
 export type EmployeeImageProps = {
     employeeImagePath: string,
-    color: colors,
+    color: Colors,
 }
 
 type EmployeesImagesProps = {

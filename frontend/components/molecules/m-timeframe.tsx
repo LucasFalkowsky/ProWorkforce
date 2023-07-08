@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row } from 'antd';
-import { colors, getAntDesignColor } from '../../styles/colors';
-import { EmployeeTimeframeDay } from '../atoms/a-employee-timeframe-day';
+import { getAntDesignColor } from '../../styles/colors';
+import { TimeframeDay } from '../atoms/a-timeframe-day';
 import variables from '../../styles/variables.module.scss';
-import { getHighestWorktime } from '../utils/get-hightest-worktime';
+import { getHighestMaxWorktime, getHighestWorktime } from '../utils/get-hightest-worktime';
+import { Colors } from '@prisma/client';
 
 export type DayData = {
     date: string,
@@ -12,20 +13,31 @@ export type DayData = {
     isNonWorkingDay?: boolean,
 }
 
-export type EmployeeTimeframeProps = {
+export type TimeframeProps = {
     dayData: DayData[],
-    color: colors,
+    color: Colors,
 }
 
-const EmployeeTimeframe: React.FC<EmployeeTimeframeProps> = ({
+const Timeframe: React.FC<TimeframeProps> = ({
     dayData, color
 }) => {
+    const [scaleFactor, setScaleFactor] = useState<number>(0);
+
     const dashBorderColor = getAntDesignColor(color)[5];
     const highestWorktime = getHighestWorktime(dayData);
+    const highestMaxWorktime = getHighestMaxWorktime(dayData);
 
     const teamCardHeight = parseInt(variables.teamCardHeight.replace('px', ''));
     const maxHeight = teamCardHeight - 10;
-    const scaleFactor = maxHeight / highestWorktime;
+
+    useEffect(() => {
+        if (highestWorktime > highestMaxWorktime) {
+            setScaleFactor(maxHeight / highestWorktime)
+        } else {
+            setScaleFactor(maxHeight / highestMaxWorktime);
+        }
+        console.log('scaleFactor', highestMaxWorktime)
+    }, []);
 
     return (
         <>
@@ -60,7 +72,7 @@ const EmployeeTimeframe: React.FC<EmployeeTimeframeProps> = ({
 
                     if (previousCapacityLimitHeigth !== capacityLimitHeight || previousisNonWorkingDay || day.isNonWorkingDay) {
                         if (previousisNonWorkingDay && day.isNonWorkingDay) {
-                            return;
+                            currentLimitBorderHeight = 0;
                         } else if (previousisNonWorkingDay) {
                             currentLimitBorderHeight = capacityLimitHeight;
                         } else if (day.isNonWorkingDay) {
@@ -110,11 +122,12 @@ const EmployeeTimeframe: React.FC<EmployeeTimeframeProps> = ({
                                     backgroundRepeat: 'no-repeat',
                                 }} />
                             </div>
-                            <EmployeeTimeframeDay
+                            <TimeframeDay
                                 keyProp={`${idx}`}
                                 color={color}
                                 worktime={day.worktime}
                                 maxWorktime={day.maxWorktime}
+                                scaleFactor={scaleFactor}
                                 date={day.date}
                                 isNonWorkingDay={day.isNonWorkingDay}
                                 previousWorktime={previousWorktime}
@@ -129,4 +142,4 @@ const EmployeeTimeframe: React.FC<EmployeeTimeframeProps> = ({
     );
 };
 
-export { EmployeeTimeframe };
+export { Timeframe };
