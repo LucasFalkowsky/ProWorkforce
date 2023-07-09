@@ -31,12 +31,6 @@ const postPhaseService = async (
             phaseteam: phase.phaseteam,
         }
     })
-    await prisma.phaseTeam.create({
-        data: {
-            phase: newPhase.id,
-            team: phase.phaseteam,
-        }
-    })
     if (newPhase) {
         return void res.status(200).json(newPhase);
     }

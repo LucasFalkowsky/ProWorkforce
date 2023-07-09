@@ -67,7 +67,6 @@ const getCalendarService = async (
     });
     const allTeams = await prisma.team.findMany({});
     const allProjectTeams = await prisma.projectTeam.findMany({});
-    const allPhaseTeams = await prisma.phaseTeam.findMany({});
     const allEmployeeTeams = await prisma.employeeTeam.findMany({});
     const allEmployees = await prisma.employee.findMany({});
 
@@ -125,8 +124,7 @@ const getCalendarService = async (
                 const projectTeams = allProjectTeams.filter((projectTeam) => projectTeam.project === projectId);
                 const teams = allTeams.filter((team) => projectTeams.some((projectTeam) => projectTeam.team === team.id));
                 const teamData = await Promise.all(teams.map(async (team) => {
-                    const phaseTeams = allPhaseTeams.filter((phaseTeam) => phaseTeam.team === team.id);
-                    const phases = projectPhases.filter((phase) => phaseTeams.some((phaseTeam) => phaseTeam.phase === phase.id));
+                    const phases = projectPhases.filter((phase) => phase.phaseteam === team.id);
                     
                     const phaseIds = phases.map((phase) => phase.id);
                     const timeframes = employeeTimeframes.filter((timeframe) => phaseIds.includes(timeframe.phase));

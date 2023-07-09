@@ -44,12 +44,6 @@ model EmployeeTeam {
   team     String @db.VarChar
 }
 
-model PhaseTeam {
-  id    String @id @default(uuid())
-  phase String @db.VarChar
-  team  String @db.VarChar
-}
-
 model Project {
   id          String   @id @default(uuid())
   name        String   @db.VarChar
