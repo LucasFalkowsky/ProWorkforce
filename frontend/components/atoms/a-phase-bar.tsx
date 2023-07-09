@@ -15,11 +15,12 @@ type PhaseBarProps = {
     daysInPhase: number;
     offset: number;
     index: number;
+    name?: string;
     passive?: boolean;
 }
 
 const PhaseBar: React.FC<PhaseBarProps> = ({
-    team, employee, daysInPhase, offset, index, passive
+    team, employee, daysInPhase, offset, index, name, passive
 }) => {
     const { t } = useTranslation();
 
@@ -62,11 +63,11 @@ const PhaseBar: React.FC<PhaseBarProps> = ({
             {!passive && !employee && (
                 <>
                     <TeamIcon team={team.name} color={team.color} isWhite />
-                    <Text style={{textOverflow: 'ellipsis'}}>{team.name}</Text>
+                    <Text style={{textOverflow: 'ellipsis'}}>{name ? name : team.name}</Text>
                 </>
             )}
             {passive && (
-                <Text style={{textOverflow: 'ellipsis'}}>{team.name}</Text>
+                <Text style={{textOverflow: 'ellipsis'}}>{name ? name : team.name}</Text>
             )}
         </Row>
     );

@@ -84,6 +84,7 @@ export default () => {
             });
             setSortedEmployeeTimeframes(sortedPhases);
         }
+        console.log(sortedEmployeeTimeframes);
     }, [allEmployeeTimeframes]);
 
     useEffect(() => {
@@ -201,7 +202,7 @@ export default () => {
                 }}>
                     <Col style={{ maxWidth: variables.maxWidthStandard, height: 'inherit', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: variables.gapStandard }}>
                         <ProjectHeader projectImagePath={project.image || ''} projectName={project.name} changeName={handleChangeName} setNewIcon={handleChangeIcon} />
-                        <ButtonSwitch buttonLeft={t('p-project-button-switch-left')} buttonRight={t('p-project-button-switch-left')} leftIsActive={planningMode} changeState={() => setPlanningMode(!planningMode)} />
+                        <ButtonSwitch buttonLeft={t('p-project-button-switch-left')} buttonRight={t('p-project-button-switch-right')} leftIsActive={planningMode} changeState={() => setPlanningMode(!planningMode)} />
                         {!planningMode && allProjectTeams ? (
                             <Col style={{ display: 'flex', flexDirection: 'column', gap: variables.gapHuge }}>
                                 <BannerImage imagePath={project.banner} setNewImage={handleChangeImage} />

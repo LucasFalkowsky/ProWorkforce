@@ -150,7 +150,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
         <div
             style={{
                 position: 'relative',
-                width: `calc(100vw - ${variables.navOpenWidth} + ${variables.paddingLarge})`,
+                width: `calc(100vw - ${variables.navOpenWidth} - ${variables.paddingLarge})`,
                 height: '100%',
             }}
         >
@@ -217,7 +217,7 @@ const CalendarGrid: React.FC<CalendarGridProps> = ({
                                 return (
                                     <Link href={`/phase?phaseId=${phase.id}&projectId=${phase.project}`} key={phase.id}>
                                         <div style={{ cursor: 'pointer' }}>
-                                            <PhaseBar team={team!} daysInPhase={daysInPhase} offset={offset} index={idx} />
+                                            <PhaseBar team={team!} name={phase.name} daysInPhase={daysInPhase} offset={offset} index={idx} />
                                         </div>
                                     </Link>
                                 )

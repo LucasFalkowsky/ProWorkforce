@@ -25,16 +25,18 @@ const WeekDisplay: React.FC<WeekDisplayProps> = ({
                 width: variables.weekDisplayWidth,
                 height: variables.weekDisplayHeight,
                 background: `${isStart ? getAntDesignColor(Colors.PRIMARY)[5] : 'none'}`,
-                borderTopLeftRadius: variables.standardBorderRadius,
-                borderTopRightRadius: variables.standardBorderRadius,
+                borderTopLeftRadius: isStart ? variables.standardBorderRadius : 'none',
+                borderTopRightRadius: isStart ? variables.standardBorderRadius : 'none',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                alignItems: 'center',
+                alignItems: 'flex-start',
                 userSelect: 'none',
+                paddingLeft: variables.paddingStandard,
+                borderLeft: `${isStart ? 'none' : `${variables.thinBorderNoColor} ${getAntDesignColor(Colors.NEUTRAL)[5]}`}`,
             }}>
                 <Text strong={isStart} style={{ color: `${isStart ? getAntDesignColor(Colors.NEUTRAL)[0] : getAntDesignColor(Colors.NEUTRAL)[12]}` }}>
-                    {`${new Date(firstDay).toLocaleDateString(`${t('a-date-range-lang')}`, { month: 'short', day: 'numeric' }).replace(/\s/g, '')} - ${new Date(lastDay).toLocaleDateString(`${t('a-date-range-lang')}`, { month: 'short', day: 'numeric' }).replace(/\s/g, '')}`}
+                    {`${new Date(firstDay).toLocaleDateString(`${t('a-date-range-lang')}`, { month: 'short', day: 'numeric' }).replace(/\s/g, '')}`}
                 </Text>
                 <Text strong={isStart} style={{ color: `${isStart ? getAntDesignColor(Colors.NEUTRAL)[0] : getAntDesignColor(Colors.NEUTRAL)[12]}` }}>
                     

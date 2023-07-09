@@ -69,6 +69,7 @@ i18n.use(initReactI18next).init({
                 "o-edit-project-info-modal-cancel": "Cancel",
                 "o-edit-project-info-modal-submit": "Save Changes",
                 "o-edit-timeframe-modal-delete": "Delete Timeframe",
+                "o-edit-timeframe-modal-workweek": "Adjust Workinghours",
             
                 "o-navigation-overview": "Overview",
                 "o-navigation-projects": "Projects",
@@ -104,13 +105,18 @@ i18n.use(initReactI18next).init({
                 "o-project-infobar-phases-undefined": "No Phases Defined",
                 "o-project-infobar-edit": "Edit Information",
 
+                "o-navigation-width": "120px",
+
                 "calculate-time-estimation": "Calculate Time Estimation",
 
                 "p-project-add-project-button": "Add Project",
                 "p-projects-overview-title": "Project Overview",
                 "p-project-button-switch-left": "Project Overview",
                 "p-project-button-switch-right": "Project Planning",
-                "p-project-defautl-banner": "https://res.cloudinary.com/dubyrwfam/image/upload/v1688232113/proWorkforce/DALL_E_2023-07-01_19.20.03_-_a_default_banner_image_for_a_project_development_tool_ysohao.png"
+                "p-project-defautl-banner": "https://res.cloudinary.com/dubyrwfam/image/upload/v1688232113/proWorkforce/DALL_E_2023-07-01_19.20.03_-_a_default_banner_image_for_a_project_development_tool_ysohao.png",
+            
+                "p-phase-page-header-title": "Project Planning",
+                "p-phase-page-header-subtitle": "back to last page",
             }
         },
         de: {
@@ -172,6 +178,14 @@ i18n.use(initReactI18next).init({
                 "o-new-phase-modal-phase-end-date": "End Datum",
                 "o-new-phase-modal-footer-submit": "Neue Phase Anlegen",
                 "o-new-phase-modal-footer-cancel": "Abbrechen",
+
+                "o-new-timeframe-modal-workweek": "Wochenarbeitszeit",
+
+                "o-edit-project-info-modal-title": "Projekt Informationen anpassen",
+                "o-edit-project-info-modal-cancel": "Abbrechen",
+                "o-edit-project-info-modal-submit": "Änderungen speichern",
+                "o-edit-timeframe-modal-delete": "Zeitraum löschen",
+                "o-edit-timeframe-modal-workweek": "Wochenstunden anpassen",
             
                 "o-navigation-overview": "Übersicht",
                 "o-navigation-projects": "Projekte",
@@ -207,18 +221,23 @@ i18n.use(initReactI18next).init({
                 "o-project-infobar-phases-undefined": "Keine Phasen Definiert",
                 "o-project-infobar-edit": "Infos Bearbeiten",
 
+                "o-navigation-width": "140px",
+
                 "calculate-time-estimation": "Zeitschätzung Berechnen",
 
                 "p-project-add-project-button": "Projekt Hinzufügen",
                 "p-projects-overview-title": "Projektübersicht",
                 "p-project-button-switch-left": "Projektübersicht",
                 "p-project-button-switch-right": "Projektplanung",
-                "p-project-defautl-banner": "https://res.cloudinary.com/dubyrwfam/image/upload/v1688232113/proWorkforce/DALL_E_2023-07-01_19.20.03_-_a_default_banner_image_for_a_project_development_tool_ysohao.png"
+                "p-project-defautl-banner": "https://res.cloudinary.com/dubyrwfam/image/upload/v1688232113/proWorkforce/DALL_E_2023-07-01_19.20.03_-_a_default_banner_image_for_a_project_development_tool_ysohao.png",
+            
+                "p-phase-page-header-title": "Projektplanung",
+                "p-phase-page-header-title-subtitle": "zurück zur Projektübersicht",
             }
         }
     },
-    lng: "en",
-    fallbackLng: "en",
+    lng: "de",
+    fallbackLng: "de",
 
     interpolation: {
       escapeValue: false

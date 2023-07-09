@@ -141,8 +141,8 @@ export default () => {
                     <Col style={{ maxWidth: variables.maxWidthStandard, height: 'inherit', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: variables.gapStandard }}>
                         <div style={{ position: 'absolute', marginTop: variables.marginHuge }}>
                             <PageHeader
-                                title="Project Planning"
-                                subtitle="back to last page"
+                                title={t("p-phase-page-header-title")}
+                                subtitle={t("p-phase-page-header-title-subtitle")}
                                 slug={`/project/${projectIdAsString}`}
                             />
                         </div>
@@ -171,7 +171,7 @@ export default () => {
                                     startDate={project.startdate ? new Date(project.startdate).toDateString() : undefined}
                                     onHighlightEmployee={(employee) => setHighlightedEmployee(employee)}
                                     onDown={setNewTimeframeStart}
-                                    onUp={highlightedEmployee ? setNewTimeframeEnd : () => { setNewTimeframeStart(undefined); setNewTimeframeEnd(undefined) }}
+                                    onUp={setNewTimeframeEnd}
                                     editTimeframe={handleEditTimeframe}
                                 />
                             </Col>
