@@ -7,7 +7,7 @@ import { getTagColor } from '../../styles/colors';
 import { ProjectStateButton } from '../atoms/a-project-state-button';
 import { TeamSelect } from '../molecules/m-team-select';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../i18n/i18n.js/index.js'
 
 type ProjectToolbarProps = {
     teams: string[],

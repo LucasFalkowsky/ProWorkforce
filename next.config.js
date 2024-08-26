@@ -10,11 +10,9 @@ const nextConfig = {
     return config
   },
   reactStrictMode: true,
-}
-
-module.exports = {
-  nextConfig,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
 }
+
+module.exports = nextConfig

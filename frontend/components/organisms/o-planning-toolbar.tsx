@@ -6,7 +6,7 @@ import { FieldTimeOutlined, TeamOutlined } from '@ant-design/icons';
 import { colors, getTagColor } from '../../styles/colors';
 import { ProjectStateButton } from '../atoms/a-project-state-button';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../i18n/i18n.js/index.js'
 import { calculateTimeEstimation } from '../utils/get-time-estimation';
 import { time } from 'console';
 

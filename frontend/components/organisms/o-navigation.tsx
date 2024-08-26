@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { colors, getAntDesignColor } from '../../styles/colors';
 import variables from '../../styles/variables.module.scss';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../i18n/i18n.js/index.js'
 
 type NavigationProps = {
     isOpen: boolean,

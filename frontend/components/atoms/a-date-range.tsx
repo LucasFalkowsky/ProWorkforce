@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../i18n/i18n.js/index.js'
 
 type DateRangeProps = {
     startDate: Date;

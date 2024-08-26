@@ -2,7 +2,7 @@ import { ExperimentOutlined, InboxOutlined, RocketOutlined, TrophyOutlined } fro
 import { State } from ".prisma/client";
 import { Button, Space } from "antd";
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../i18n/i18n.js/index.js'
 
 type ProjectStateButtonProps = {
     status: State,

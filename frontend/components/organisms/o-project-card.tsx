@@ -8,7 +8,7 @@ import { Typography } from 'antd';
 import variables from '../../styles/variables.module.scss';
 import { colors, getAntDesignColor } from '../../styles/colors';
 import { useTranslation } from 'react-i18next';
-import '../../../pages/i18n.js'
+import '../../../i18n/i18n.js/index.js'
 
 type ProjectCardProps = {
     totalPhasesCount: number,
